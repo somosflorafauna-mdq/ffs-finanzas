@@ -45,6 +45,21 @@ select option{background:#2a1050;color:#f3e8ff}
   .ffs-balance-amount{font-size:26px!important}
   .ffs-card-grid{grid-template-columns:1fr 1fr!important}
   .ffs-section-card{padding:12px!important}
+  /* FIX GHOSTING ROOT CAUSE:
+     will-change:transform en el header crea una GPU texture layer.
+     Cuando un input date/select recibe focus en Android Chrome, el browser
+     promueve el input a su propio compositor layer, lo que hace que el header
+     GPU layer se "filtre" visualmente sobre el contenido scrolleado (ghosting).
+     Solución: will-change:auto elimina la GPU layer del header en mobile.
+     overflow:visible elimina el clipping context que amplifica el artifact. */
+  .ffs-header-mobile{
+    will-change:auto!important;
+    overflow:visible!important;
+    border-radius:16px!important;
+  }
+  /* rgba sólidos para los 3 elementos con rgba+borderRadius en "Agregar" */
+  .ffs-monto-panel{background:#1e0e3f!important;border-color:#341868!important;}
+  .ffs-monto-inner{border-bottom-color:#4a2391!important;}
 }
 </style>
 </head>
@@ -1179,7 +1194,7 @@ function App() {
           {view==="nuevo"&&(
             <div style={card}>
               <p style={{fontSize:15,fontWeight:700,margin:"0 0 16px"}}>{editMovId?"Editar movimiento":"Agregar movimiento"}</p>
-              <div style={{display:"flex",gap:6,marginBottom:18,background:P.bg3,borderRadius:10,padding:4}}>
+              <div className="ffs-tipo-row" style={{display:"flex",gap:6,marginBottom:18,background:P.bg3,borderRadius:10,padding:4}}>
                 {["egreso","ingreso"].map(function(t){
                   var sel=form.tipo===t, isIng=t==="ingreso";
                   return (
@@ -1192,7 +1207,7 @@ function App() {
                   );
                 })}
               </div>
-              <div style={{background:P.bg3,borderRadius:12,padding:14,marginBottom:14}}>
+              <div className="ffs-form-block" style={{background:P.bg3,borderRadius:12,padding:14,marginBottom:14}}>
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:12}}>
                   <div>
                     <label style={labelStyle}>Fecha</label>
@@ -1258,16 +1273,16 @@ function App() {
                   );
                 })()}
               </div>
-              <div style={{marginBottom:14,background:"rgba(124,58,237,0.15)",border:"1px solid rgba(124,58,237,0.35)",borderRadius:12,padding:16}}>
+              <div className="ffs-monto-panel" style={{marginBottom:14,background:"rgba(124,58,237,0.15)",border:"1px solid rgba(124,58,237,0.35)",borderRadius:12,padding:16}}>
                 <label style={{fontSize:10,color:P.accent3,display:"block",marginBottom:7,fontWeight:700,letterSpacing:"0.07em",textTransform:"uppercase"}}>Monto</label>
-                <div style={{display:"flex",alignItems:"baseline",gap:6,borderBottom:"2px solid rgba(124,58,237,0.55)",paddingBottom:6}}>
+                <div className="ffs-monto-inner" style={{display:"flex",alignItems:"baseline",gap:6,borderBottom:"2px solid rgba(124,58,237,0.55)",paddingBottom:6}}>
                   <span style={{fontSize:20,color:P.accent3,fontWeight:700}}>{getMonSym(form.moneda)}</span>
                   <input type="number" min="0" step="0.01" placeholder="0,00" value={form.monto}
                     onChange={function(e){setForm(function(f){return Object.assign({},f,{monto:e.target.value});});}}
                     style={{flex:1,fontSize:30,fontWeight:700,border:"none",background:"transparent",outline:"none",color:P.accent3}}/>
                 </div>
               </div>
-              <div style={{marginBottom:20,background:P.bg3,borderRadius:12,padding:14}}>
+              <div className="ffs-desc-block" style={{marginBottom:20,background:P.bg3,borderRadius:12,padding:14}}>
                 <label style={labelStyle}>Descripción</label>
                 <div style={fieldBox}><input type="text" placeholder="Detalle opcional..." value={form.desc} onChange={function(e){setForm(function(f){return Object.assign({},f,{desc:e.target.value});});}} style={iS}/></div>
               </div>
