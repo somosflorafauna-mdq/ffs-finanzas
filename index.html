@@ -45,21 +45,18 @@ select option{background:#2a1050;color:#f3e8ff}
   .ffs-balance-amount{font-size:26px!important}
   .ffs-card-grid{grid-template-columns:1fr 1fr!important}
   .ffs-section-card{padding:12px!important}
-  /* FIX GHOSTING ROOT CAUSE:
-     will-change:transform en el header crea una GPU texture layer.
-     Cuando un input date/select recibe focus en Android Chrome, el browser
-     promueve el input a su propio compositor layer, lo que hace que el header
-     GPU layer se "filtre" visualmente sobre el contenido scrolleado (ghosting).
-     Solución: will-change:auto elimina la GPU layer del header en mobile.
-     overflow:visible elimina el clipping context que amplifica el artifact. */
+  /* Elimina compositor triggers del header: gradient+overflow:hidden+will-change
+     son los causantes del rendering glitch en Android Chrome */
   .ffs-header-mobile{
-    will-change:auto!important;
+    background:#1e0a40!important;
     overflow:visible!important;
+    will-change:auto!important;
+    -webkit-transform:none!important;
+    transform:none!important;
     border-radius:16px!important;
+    box-shadow:0 2px 24px rgba(124,58,237,0.35)!important;
   }
-  /* rgba sólidos para los 3 elementos con rgba+borderRadius en "Agregar" */
-  .ffs-monto-panel{background:#1e0e3f!important;border-color:#341868!important;}
-  .ffs-monto-inner{border-bottom-color:#4a2391!important;}
+  .ffs-header-bubble{display:none!important;}
 }
 </style>
 </head>
@@ -166,6 +163,14 @@ const PICKABLE_ICONS=[
 ];
 
 // ─── UTILS ────────────────────────────────────────────────────────────────────
+function hexToRgba(hex, alpha) {
+  if (!hex) return 'rgba(168,85,247,'+alpha+')';
+  var h = String(hex).replace('#','');
+  if (h.length===3) h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+  if (h.length!==6) return 'rgba(168,85,247,'+alpha+')';
+  var r=parseInt(h.slice(0,2),16),g=parseInt(h.slice(2,4),16),b=parseInt(h.slice(4,6),16);
+  return 'rgba('+r+','+g+','+b+','+alpha+')';
+}
 function fmt(n, sym) {
   return (sym || "$") + new Intl.NumberFormat("es-AR", {maximumFractionDigits: 0}).format(Math.abs(n));
 }
@@ -251,7 +256,7 @@ function IconPicker({value, onChange, color}) {
         {filtered.map(function(k) {
           return (
             <button key={k} onClick={function(){onChange(k);}} title={ICON_LABELS[k]||k}
-              style={{width:42,height:42,borderRadius:9,border:"1.5px solid "+(value===k?color:P.border),background:value===k?color+"25":P.bg2,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>
+              style={{width:42,height:42,borderRadius:9,border:"1.5px solid "+(value===k?color:P.border),background:value===k?hexToRgba(color,0.15):P.bg2,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>
               <Ico icon={k} size={18} color={value===k?color:P.textMuted}/>
             </button>
           );
@@ -274,7 +279,7 @@ function CatAvatar({cat, size}) {
   if (!cat) return <div style={{width:size,height:size,borderRadius:size*0.28,background:P.bg3,flexShrink:0}}/>;
   var col = safeHex(cat.color, P.accent3);
   return (
-    <div style={{width:size,height:size,borderRadius:size*0.28,background:col+"22",border:"1px solid "+col+"55",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+    <div style={{width:size,height:size,borderRadius:size*0.28,background:hexToRgba(col,0.18),border:"1px solid "+hexToRgba(col,0.5),display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
       <Ico icon={cat.icon} size={size*0.52} color={col}/>
     </div>
   );
@@ -284,7 +289,7 @@ function ProfileAvatar({profile, size}) {
   size = size || 32;
   var col = safeHex((profile && profile.color) || null, P.accent2);
   return (
-    <div style={{width:size,height:size,borderRadius:"50%",background:col+"22",border:"2px solid "+col+"66",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+    <div style={{width:size,height:size,borderRadius:"50%",background:hexToRgba(col,0.18),border:"2px solid "+hexToRgba(col,0.4),display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
       <Ico icon="__user__" size={size*0.5} color={col}/>
     </div>
   );
@@ -310,7 +315,7 @@ function IBtn({icon, color, onClick, title, small}) {
   var isz = small ? 13 : 15;
   return (
     <button onClick={onClick} title={title}
-      style={{width:sz,height:sz,borderRadius:sz/2,border:"1px solid "+color+"44",background:color+"18",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0}}>
+      style={{width:sz,height:sz,borderRadius:sz/2,border:"1px solid "+hexToRgba(color,0.27),background:hexToRgba(color,0.1),display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0}}>
       <Ico icon={icon} size={isz} color={color}/>
     </button>
   );
@@ -1018,7 +1023,7 @@ function App() {
               </button>
             );
             return (
-              <button key={t.id} onClick={function(){navTo(t.id);}} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",border:"none",borderRadius:10,cursor:"pointer",background:view===t.id?t.color+"20":"transparent",color:view===t.id?t.color:P.textMuted,fontSize:13,fontWeight:view===t.id?600:400,width:"100%",marginBottom:4,borderLeft:view===t.id?"3px solid "+t.color:"3px solid transparent"}}>
+              <button key={t.id} onClick={function(){navTo(t.id);}} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",border:"none",borderRadius:10,cursor:"pointer",background:view===t.id?hexToRgba(t.color,0.13):"transparent",color:view===t.id?t.color:P.textMuted,fontSize:13,fontWeight:view===t.id?600:400,width:"100%",marginBottom:4,borderLeft:view===t.id?"3px solid "+t.color:"3px solid transparent"}}>
                 <Ico icon={t.icon} size={16} color={view===t.id?t.color:P.textMuted}/>{t.label}
               </button>
             );
@@ -1194,7 +1199,7 @@ function App() {
           {view==="nuevo"&&(
             <div style={card}>
               <p style={{fontSize:15,fontWeight:700,margin:"0 0 16px"}}>{editMovId?"Editar movimiento":"Agregar movimiento"}</p>
-              <div className="ffs-tipo-row" style={{display:"flex",gap:6,marginBottom:18,background:P.bg3,borderRadius:10,padding:4}}>
+              <div style={{display:"flex",gap:6,marginBottom:18,background:P.bg3,borderRadius:10,padding:4}}>
                 {["egreso","ingreso"].map(function(t){
                   var sel=form.tipo===t, isIng=t==="ingreso";
                   return (
@@ -1207,7 +1212,7 @@ function App() {
                   );
                 })}
               </div>
-              <div className="ffs-form-block" style={{background:P.bg3,borderRadius:12,padding:14,marginBottom:14}}>
+              <div style={{background:P.bg3,borderRadius:12,padding:14,marginBottom:14}}>
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:12}}>
                   <div>
                     <label style={labelStyle}>Fecha</label>
@@ -1237,7 +1242,7 @@ function App() {
                     var cc=safeHex(c.color,P.accent3);
                     return (
                       <button key={c.id} onClick={function(){setForm(function(f){return Object.assign({},f,{catId:sel?"":String(c.id),subId:""});});}}
-                        style={{display:"flex",alignItems:"center",gap:6,padding:"7px 13px",borderRadius:20,border:"1.5px solid "+(sel?cc:P.border),background:sel?cc+"20":P.bg2,color:sel?cc:P.textSub,fontSize:12,cursor:"pointer",fontWeight:sel?700:400}}>
+                        style={{display:"flex",alignItems:"center",gap:6,padding:"7px 13px",borderRadius:20,border:"1.5px solid "+(sel?cc:P.border),background:sel?hexToRgba(cc,0.13):P.bg2,color:sel?cc:P.textSub,fontSize:12,cursor:"pointer",fontWeight:sel?700:400}}>
                         <Ico icon={c.icon} size={13} color={sel?cc:P.textSub}/>{c.nombre}
                       </button>
                     );
@@ -1250,7 +1255,7 @@ function App() {
                   var hasSubs=cat.subs&&cat.subs.length>0;
                   var cc=safeHex(cat.color,P.accent3);
                   return (
-                    <div style={{background:cc+"10",border:"1.5px solid "+cc+"30",borderRadius:12,padding:"12px 14px"}}>
+                    <div style={{background:hexToRgba(cc,0.06),border:"1.5px solid "+hexToRgba(cc,0.19),borderRadius:12,padding:"12px 14px"}}>
                       <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:hasSubs?10:0}}>
                         <CatAvatar cat={cat} size={22}/>
                         <span style={{fontSize:12,fontWeight:700,color:cc}}>{cat.nombre}</span>
@@ -1262,7 +1267,7 @@ function App() {
                             var selSub=form.subId===String(sub.id);
                             return (
                               <button key={sub.id} onClick={function(){setForm(function(f){return Object.assign({},f,{subId:selSub?"":String(sub.id)});});}}
-                                style={{display:"flex",alignItems:"center",gap:5,padding:"6px 12px",borderRadius:16,border:"1.5px solid "+(selSub?cc:P.border),background:selSub?cc+"25":P.bg2,color:selSub?cc:P.textSub,fontSize:12,cursor:"pointer",fontWeight:selSub?700:400}}>
+                                style={{display:"flex",alignItems:"center",gap:5,padding:"6px 12px",borderRadius:16,border:"1.5px solid "+(selSub?cc:P.border),background:selSub?hexToRgba(cc,0.15):P.bg2,color:selSub?cc:P.textSub,fontSize:12,cursor:"pointer",fontWeight:selSub?700:400}}>
                                 {selSub&&<Ico icon="__check__" size={11} color={cc}/>}{sub.nombre}
                               </button>
                             );
@@ -1273,16 +1278,16 @@ function App() {
                   );
                 })()}
               </div>
-              <div className="ffs-monto-panel" style={{marginBottom:14,background:"rgba(124,58,237,0.15)",border:"1px solid rgba(124,58,237,0.35)",borderRadius:12,padding:16}}>
+              <div style={{marginBottom:14,background:"rgba(124,58,237,0.15)",border:"1px solid rgba(124,58,237,0.35)",borderRadius:12,padding:16}}>
                 <label style={{fontSize:10,color:P.accent3,display:"block",marginBottom:7,fontWeight:700,letterSpacing:"0.07em",textTransform:"uppercase"}}>Monto</label>
-                <div className="ffs-monto-inner" style={{display:"flex",alignItems:"baseline",gap:6,borderBottom:"2px solid rgba(124,58,237,0.55)",paddingBottom:6}}>
+                <div style={{display:"flex",alignItems:"baseline",gap:6,borderBottom:"2px solid rgba(124,58,237,0.55)",paddingBottom:6}}>
                   <span style={{fontSize:20,color:P.accent3,fontWeight:700}}>{getMonSym(form.moneda)}</span>
                   <input type="number" min="0" step="0.01" placeholder="0,00" value={form.monto}
                     onChange={function(e){setForm(function(f){return Object.assign({},f,{monto:e.target.value});});}}
                     style={{flex:1,fontSize:30,fontWeight:700,border:"none",background:"transparent",outline:"none",color:P.accent3}}/>
                 </div>
               </div>
-              <div className="ffs-desc-block" style={{marginBottom:20,background:P.bg3,borderRadius:12,padding:14}}>
+              <div style={{marginBottom:20,background:P.bg3,borderRadius:12,padding:14}}>
                 <label style={labelStyle}>Descripción</label>
                 <div style={fieldBox}><input type="text" placeholder="Detalle opcional..." value={form.desc} onChange={function(e){setForm(function(f){return Object.assign({},f,{desc:e.target.value});});}} style={iS}/></div>
               </div>
@@ -1325,18 +1330,18 @@ function App() {
                   <p style={{fontSize:10,color:P.textMuted,margin:"0 0 8px",fontWeight:600,letterSpacing:"0.07em",textTransform:"uppercase"}}>Cuenta</p>
                   <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
                     {[{v:"",l:"Todas"},{v:"Hogar",l:"Hogar"},{v:"Trabajo",l:"Trabajo"},{v:"Personal",l:"Personal"}].map(function(o){
-                      return <button key={o.v} onClick={function(){setFiltros(function(x){return Object.assign({},x,{cuenta:o.v});});}} style={{padding:"6px 14px",borderRadius:20,cursor:"pointer",fontSize:12,fontWeight:filtros.cuenta===o.v?700:400,border:"1.5px solid "+(filtros.cuenta===o.v?P.accent2:P.border),background:filtros.cuenta===o.v?P.accent2+"15":P.bg3,color:filtros.cuenta===o.v?P.accent2:P.textSub}}>{o.l}</button>;
+                      return <button key={o.v} onClick={function(){setFiltros(function(x){return Object.assign({},x,{cuenta:o.v});});}} style={{padding:"6px 14px",borderRadius:20,cursor:"pointer",fontSize:12,fontWeight:filtros.cuenta===o.v?700:400,border:"1.5px solid "+(filtros.cuenta===o.v?P.accent2:P.border),background:filtros.cuenta===o.v?hexToRgba(P.accent2,0.08):P.bg3,color:filtros.cuenta===o.v?P.accent2:P.textSub}}>{o.l}</button>;
                     })}
                   </div>
                 </div>
                 <div style={{marginBottom:14}}>
                   <p style={{fontSize:10,color:P.textMuted,margin:"0 0 8px",fontWeight:600,letterSpacing:"0.07em",textTransform:"uppercase"}}>Categoría</p>
                   <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
-                    <button onClick={function(){setFiltros(function(x){return Object.assign({},x,{catId:""});});}} style={{padding:"6px 14px",borderRadius:20,cursor:"pointer",fontSize:12,fontWeight:!filtros.catId?700:400,border:"1.5px solid "+(filtros.catId===""?P.accent3:P.border),background:filtros.catId===""?P.accent3+"18":P.bg3,color:filtros.catId===""?P.accent3:P.textSub}}>Todas</button>
+                    <button onClick={function(){setFiltros(function(x){return Object.assign({},x,{catId:""});});}} style={{padding:"6px 14px",borderRadius:20,cursor:"pointer",fontSize:12,fontWeight:!filtros.catId?700:400,border:"1.5px solid "+(filtros.catId===""?P.accent3:P.border),background:filtros.catId===""?hexToRgba(P.accent3,0.1):P.bg3,color:filtros.catId===""?P.accent3:P.textSub}}>Todas</button>
                     {cats.map(function(c){
                       var sel=filtros.catId===String(c.id);
                       var cc=safeHex(c.color,P.accent2);
-                      return <button key={c.id} onClick={function(){setFiltros(function(x){return Object.assign({},x,{catId:String(c.id)});});}} style={{display:"flex",alignItems:"center",gap:5,padding:"6px 12px",borderRadius:20,cursor:"pointer",fontSize:12,fontWeight:sel?700:400,border:"1.5px solid "+(sel?cc:P.border),background:sel?cc+"18":P.bg3,color:sel?cc:P.textSub}}><Ico icon={c.icon} size={12} color={sel?cc:P.textSub}/>{c.nombre}</button>;
+                      return <button key={c.id} onClick={function(){setFiltros(function(x){return Object.assign({},x,{catId:String(c.id)});});}} style={{display:"flex",alignItems:"center",gap:5,padding:"6px 12px",borderRadius:20,cursor:"pointer",fontSize:12,fontWeight:sel?700:400,border:"1.5px solid "+(sel?cc:P.border),background:sel?hexToRgba(cc,0.1):P.bg3,color:sel?cc:P.textSub}}><Ico icon={c.icon} size={12} color={sel?cc:P.textSub}/>{c.nombre}</button>;
                     })}
                   </div>
                 </div>
@@ -1396,7 +1401,7 @@ function App() {
               <div style={card}>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
                   <p style={{fontSize:13,fontWeight:700,margin:0}}>Mis categorías</p>
-                  <button onClick={function(){setShowNewCat(!showNewCat);}} style={{display:"flex",alignItems:"center",gap:5,padding:"7px 14px",borderRadius:20,border:"1.5px solid "+P.pink,background:P.pink+"15",color:P.pink,fontSize:12,cursor:"pointer",fontWeight:700}}>
+                  <button onClick={function(){setShowNewCat(!showNewCat);}} style={{display:"flex",alignItems:"center",gap:5,padding:"7px 14px",borderRadius:20,border:"1.5px solid "+P.pink,background:hexToRgba(P.pink,0.08),color:P.pink,fontSize:12,cursor:"pointer",fontWeight:700}}>
                     <Ico icon="__circle_plus__" size={13} color={P.pink}/>Nueva
                   </button>
                 </div>
@@ -1531,7 +1536,7 @@ function App() {
                                 onKeyDown={function(e){if(e.key==="Enter")addSub(c.id);}}
                                 style={{width:"100%",boxSizing:"border-box",border:"none",background:"transparent",padding:"8px 10px",fontSize:12,outline:"none",color:P.text}}/>
                             </div>
-                            <button onClick={function(){addSub(c.id);}} style={{padding:"0 14px",background:cc+"20",border:"1.5px solid "+cc,color:cc,borderRadius:9,cursor:"pointer",fontWeight:700,fontSize:14}}>+</button>
+                            <button onClick={function(){addSub(c.id);}} style={{padding:"0 14px",background:hexToRgba(cc,0.13),border:"1.5px solid "+cc,color:cc,borderRadius:9,cursor:"pointer",fontWeight:700,fontSize:14}}>+</button>
                           </div>
                         </div>
                       )}
@@ -1552,7 +1557,7 @@ function App() {
                     <p style={{fontSize:13,fontWeight:700,margin:"0 0 2px"}}>Servicios</p>
                     <p style={{fontSize:11,color:P.textMuted,margin:0}}>Tocá el estado para rotar</p>
                   </div>
-                  <button onClick={function(){setShowNewSrv(!showNewSrv);}} style={{display:"flex",alignItems:"center",gap:5,padding:"7px 14px",borderRadius:20,border:"1.5px solid "+P.pink,background:P.pink+"15",color:P.pink,fontSize:12,cursor:"pointer",fontWeight:700}}>
+                  <button onClick={function(){setShowNewSrv(!showNewSrv);}} style={{display:"flex",alignItems:"center",gap:5,padding:"7px 14px",borderRadius:20,border:"1.5px solid "+P.pink,background:hexToRgba(P.pink,0.08),color:P.pink,fontSize:12,cursor:"pointer",fontWeight:700}}>
                     <Ico icon="__circle_plus__" size={13} color={P.pink}/>Agregar
                   </button>
                 </div>
@@ -1572,7 +1577,7 @@ function App() {
                       <div style={{display:"flex",gap:6,marginBottom:8}}>
                         {[[false,P.green,"Fijo"],[true,P.amber,"Variable"]].map(function(item){
                           var isVar=item[0], col=item[1], lbl=item[2];
-                          return <button key={lbl} onClick={function(){setNewSrv(function(n){return Object.assign({},n,{montoVariable:isVar,monto:""});});}} style={{flex:1,padding:"8px",borderRadius:10,border:"1.5px solid "+(newSrv.montoVariable===isVar?col:P.border),background:newSrv.montoVariable===isVar?col+"18":P.bg2,color:newSrv.montoVariable===isVar?col:P.textSub,fontSize:12,cursor:"pointer",fontWeight:newSrv.montoVariable===isVar?700:400}}>{lbl}</button>;
+                          return <button key={lbl} onClick={function(){setNewSrv(function(n){return Object.assign({},n,{montoVariable:isVar,monto:""});});}} style={{flex:1,padding:"8px",borderRadius:10,border:"1.5px solid "+(newSrv.montoVariable===isVar?col:P.border),background:newSrv.montoVariable===isVar?hexToRgba(col,0.1):P.bg2,color:newSrv.montoVariable===isVar?col:P.textSub,fontSize:12,cursor:"pointer",fontWeight:newSrv.montoVariable===isVar?700:400}}>{lbl}</button>;
                         })}
                       </div>
                       {!newSrv.montoVariable&&(
@@ -1587,7 +1592,7 @@ function App() {
                       <div style={{display:"flex",gap:6}}>
                         {[["pagado",P.green],["pendiente",P.amber],["inactivo","#9ca3af"]].map(function(item){
                           var k=item[0], col=item[1];
-                          return <button key={k} onClick={function(){setNewSrv(function(n){return Object.assign({},n,{estado:k});});}} style={{flex:1,padding:"8px",borderRadius:20,border:"1.5px solid "+(newSrv.estado===k?col:P.border),background:newSrv.estado===k?col+"18":P.bg2,color:newSrv.estado===k?col:P.textSub,fontSize:11,cursor:"pointer",fontWeight:newSrv.estado===k?700:400}}>{k.charAt(0).toUpperCase()+k.slice(1)}</button>;
+                          return <button key={k} onClick={function(){setNewSrv(function(n){return Object.assign({},n,{estado:k});});}} style={{flex:1,padding:"8px",borderRadius:20,border:"1.5px solid "+(newSrv.estado===k?col:P.border),background:newSrv.estado===k?hexToRgba(col,0.1):P.bg2,color:newSrv.estado===k?col:P.textSub,fontSize:11,cursor:"pointer",fontWeight:newSrv.estado===k?700:400}}>{k.charAt(0).toUpperCase()+k.slice(1)}</button>;
                         })}
                       </div>
                     </div>
@@ -1767,7 +1772,7 @@ function App() {
               </button>
             );
             return (
-              <button key={t.id} onClick={function(){navTo(t.id);}} style={{flex:1,padding:"7px 2px",border:"2px solid "+(active?t.color:P.border),borderRadius:11,cursor:"pointer",background:active?t.color+"18":P.bg2,color:active?t.color:P.textMuted,fontSize:9,fontWeight:active?700:500,letterSpacing:"0.04em",display:"flex",flexDirection:"column",alignItems:"center",gap:3}}>
+              <button key={t.id} onClick={function(){navTo(t.id);}} style={{flex:1,padding:"7px 2px",border:"2px solid "+(active?t.color:P.border),borderRadius:11,cursor:"pointer",background:active?hexToRgba(t.color,0.1):P.bg2,color:active?t.color:P.textMuted,fontSize:9,fontWeight:active?700:500,letterSpacing:"0.04em",display:"flex",flexDirection:"column",alignItems:"center",gap:3}}>
                 <Ico icon={t.icon} size={16} color={active?t.color:P.textMuted}/>{t.label.toUpperCase()}
               </button>
             );
