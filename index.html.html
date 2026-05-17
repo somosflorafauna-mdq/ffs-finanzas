@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="FFS"/>
+  <meta name="theme-color" content="#0d0620"/>
+  <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkZGUyBGaW5hbnphcyIsCiAgInNob3J0X25hbWUiOiAiRkZTIiwKICAic3RhcnRfdXJsIjogIi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwZDA2MjAiLAogICJ0aGVtZV9jb2xvciI6ICIjMGQwNjIwIiwKICAiaWNvbnMiOiBbCiAgICB7InNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSGRwWkhSb1BTSTFNVElpSUdobGFXZG9kRDBpTlRFeUlpQjJhV1YzUW05NFBTSXdJREFnTVRjekxqVTBJREUzTXk0MU5DSStQSEpsWTNRZ2QybGtkR2c5SWpFM015NDFOQ0lnYUdWcFoyaDBQU0l4TnpNdU5UUWlJSEo0UFNJek1DSWdabWxzYkQwaUl6QmtNRFl5TUNJdlBqeHdZWFJvSUdacGJHdzlJaU5sT0RjNVpqa2lJR1E5SWsweE1qSXVOaklnTmpZdU56SnNNek11TkRZZ01Ua3VNekVnTUNBdE1qSXVOamNnTFRNekxqUTJJREFnTUNBekxqTTFlbTB0TVRVdU9DQTFOUzQ1TVd3dE1Ua3VNeklnTXpNdU5EWWdNakl1TmpZZ01DQXdJQzB6TXk0ME5pQXRNeTR6TlNBd2VtMHRNalV1TXpnZ05ETXVPVFpzTFRRdU1ERWdOaTQ1TlNBdE16VXVNVGdnTFRJd0xqTXhJQzAyTGprMUlEUXVNRElnTFRJd0xqTXhJQzB6TlM0eE9DQXRPQzR3TXlBd0lEQWdMVFF3TGpZeUlDMDJMamsySUMwMExqQXhJREl3TGpNeElDMHpOUzR4T0NBdE5DNHdNU0F0Tmk0NU5TQXpOUzR4T0NBdE1qQXVNeklnTUNBdE9DNHdNaUEwTUM0Mk1pQXdJRFF1TURFZ0xUWXVPVFlnTXpVdU1UZ2dNakF1TXpFZ05pNDVOU0F0TkM0d01TQXlNQzR6TVNBek5TNHhPQ0E0TGpBeklEQWdNQ0EwTUM0Mk1pQTJMamsxSURRdU1ERWdMVEl3TGpNeElETTFMakU0SURRdU1ERWdOaTQ1TlNBdE16VXVNVGdnTWpBdU16RWdNQ0E0TGpBeklDMDBNQzQyTWlBd2VtMHROak11T1RnZ0xUYzVMakE0YkRBZ01qSXVOallnTXpNdU5EWWdNQ0F3SUMwekxqTTFJQzB6TXk0ME5pQXRNVGt1TXpKNmJUWXpMakEwSURJeUxqWTJiREV5TGpVMElEQWdNVEF1T0RjZ0xUWXVNamNnTmk0eU5pQXRNVEF1T0RVZ01DQXRNVEl1TlRVZ0xUWXVNamNnTFRFd0xqZzNJQzB4TUM0NE5pQXROaTR5TnlBdE1USXVOVFFnTUNBdE1UQXVPRFlnTmk0eU55QXROaTR5TnlBeE1DNDROeUF3SURFeUxqVTBJRFl1TWpjZ01UQXVPRFVnTVRBdU9EY2dOaTR5TjNwdE5TNDFNeUF0T1RJdU56RnNMVEl5TGpZM0lEQWdNQ0F6TXk0ME5pQXpMak0xSURBZ01Ua3VNeklnTFRNekxqUTJlbTB6TkM0M05TQTRMamt5YkMweE9TNDJNeUF0TVRFdU16TWdMVEUyTGpjeklESTRMamszSURJdU9TQXhMalk0SURNekxqUTJJQzB4T1M0ek1ucHRNalV1TmpRZ01qVXVNV3d0TVRFdU16TWdMVEU1TGpZeklDMHlPQzQ1T0NBeE5pNDNNeUF4TGpZM0lESXVPU0F6T0M0Mk5DQXdlbTB0TWpRdU16WWdOVFl1TXpKc01DQXpPQzQyTXlBeE9TNDJNeUF0TVRFdU16TWdMVEUyTGpjeklDMHlPQzQ1TnlBdE1pNDVJREV1TmpkNmJUVXVOemdnTFRJd0xqUTJiREU1TGpNeUlETXpMalEySURFeExqTXpJQzB4T1M0Mk15QXRNamd1T1RnZ0xURTJMamN6SUMweExqWTNJREl1T1hwdExUYzJMak0zSUMweU1TNDFPR3d3SUMwek9DNDJNeUF0TVRrdU5qTWdNVEV1TXpNZ01UWXVOek1nTWpndU9UY2dNaTQ1SUMweExqWTRlbTB0TlM0M09DQXlNQzQwTjJ3dE1Ua3VNeklnTFRNekxqUTJJQzB4TVM0ek15QXhPUzQyTXlBeU9DNDVPQ0F4Tmk0M015QXhMalkzSUMweUxqbDZiVFF3TGpVeUlEUXhMalkwYkMwek15NDBOaUF4T1M0ek1TQXhPUzQyTXlBeE1TNHpNeUF4Tmk0M015QXRNamd1T1RjZ0xUSXVPU0F0TVM0Mk4zcHRMVEl3TGpRMklDMDFMamM0YkMwek9DNDJOQ0F3SURFeExqTXpJREU1TGpZeklESTRMams0SUMweE5pNDNNeUF0TVM0Mk55QXRNaTQ1ZWlJdlBqd3ZjM1puUGc9PSIsICJzaXplcyI6ICI1MTJ4NTEyIiwgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCJ9CiAgXQp9"/>
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgMTczLjU0IDE3My41NCI+PHJlY3Qgd2lkdGg9IjE3My41NCIgaGVpZ2h0PSIxNzMuNTQiIHJ4PSIzMCIgZmlsbD0iIzBkMDYyMCIvPjxwYXRoIGZpbGw9IiNlODc5ZjkiIGQ9Ik0xMjIuNjIgNjYuNzJsMzMuNDYgMTkuMzEgMCAtMjIuNjcgLTMzLjQ2IDAgMCAzLjM1em0tMTUuOCA1NS45MWwtMTkuMzIgMzMuNDYgMjIuNjYgMCAwIC0zMy40NiAtMy4zNSAwem0tMjUuMzggNDMuOTZsLTQuMDEgNi45NSAtMzUuMTggLTIwLjMxIC02Ljk1IDQuMDIgLTIwLjMxIC0zNS4xOCAtOC4wMyAwIDAgLTQwLjYyIC02Ljk2IC00LjAxIDIwLjMxIC0zNS4xOCAtNC4wMSAtNi45NSAzNS4xOCAtMjAuMzIgMCAtOC4wMiA0MC42MiAwIDQuMDEgLTYuOTYgMzUuMTggMjAuMzEgNi45NSAtNC4wMSAyMC4zMSAzNS4xOCA4LjAzIDAgMCA0MC42MiA2Ljk1IDQuMDEgLTIwLjMxIDM1LjE4IDQuMDEgNi45NSAtMzUuMTggMjAuMzEgMCA4LjAzIC00MC42MiAwem0tNjMuOTggLTc5LjA4bDAgMjIuNjYgMzMuNDYgMCAwIC0zLjM1IC0zMy40NiAtMTkuMzJ6bTYzLjA0IDIyLjY2bDEyLjU0IDAgMTAuODcgLTYuMjcgNi4yNiAtMTAuODUgMCAtMTIuNTUgLTYuMjcgLTEwLjg3IC0xMC44NiAtNi4yNyAtMTIuNTQgMCAtMTAuODYgNi4yNyAtNi4yNyAxMC44NyAwIDEyLjU0IDYuMjcgMTAuODUgMTAuODcgNi4yN3ptNS41MyAtOTIuNzFsLTIyLjY3IDAgMCAzMy40NiAzLjM1IDAgMTkuMzIgLTMzLjQ2em0zNC43NSA4LjkybC0xOS42MyAtMTEuMzMgLTE2LjczIDI4Ljk3IDIuOSAxLjY4IDMzLjQ2IC0xOS4zMnptMjUuNjQgMjUuMWwtMTEuMzMgLTE5LjYzIC0yOC45OCAxNi43MyAxLjY3IDIuOSAzOC42NCAwem0tMjQuMzYgNTYuMzJsMCAzOC42MyAxOS42MyAtMTEuMzMgLTE2LjczIC0yOC45NyAtMi45IDEuNjd6bTUuNzggLTIwLjQ2bDE5LjMyIDMzLjQ2IDExLjMzIC0xOS42MyAtMjguOTggLTE2LjczIC0xLjY3IDIuOXptLTc2LjM3IC0yMS41OGwwIC0zOC42MyAtMTkuNjMgMTEuMzMgMTYuNzMgMjguOTcgMi45IC0xLjY4em0tNS43OCAyMC40N2wtMTkuMzIgLTMzLjQ2IC0xMS4zMyAxOS42MyAyOC45OCAxNi43MyAxLjY3IC0yLjl6bTQwLjUyIDQxLjY0bC0zMy40NiAxOS4zMSAxOS42MyAxMS4zMyAxNi43MyAtMjguOTcgLTIuOSAtMS42N3ptLTIwLjQ2IC01Ljc4bC0zOC42NCAwIDExLjMzIDE5LjYzIDI4Ljk4IC0xNi43MyAtMS42NyAtMi45eiIvPjwvc3ZnPg=="/>
+<title>FFS Finanzas</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0d0620;color:#f3e8ff;min-height:100vh}
+input,select,button{font-family:inherit}
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+select option{background:#2a1050;color:#f3e8ff}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(168,85,247,0.25);border-radius:2px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeIn 0.18s ease}
+@media(min-width:768px){
+  .app-sidebar{display:flex!important}
+  .app-bottomnav{display:none!important}
+  .app-main{padding:20px!important}
+}
+@media(min-width:1024px){
+  .app-main{padding:24px 28px!important}
+}
+@media(max-width:767px){
+  .app-sidebar{display:none!important}
+  .app-bottomnav{display:flex!important;position:fixed;bottom:0;left:0;right:0;z-index:100}
+  .app-main{padding:8px 8px 72px!important}
+  .ffs-balance-amount{font-size:26px!important}
+  .ffs-card-grid{grid-template-columns:1fr 1fr!important}
+  .ffs-section-card{padding:12px!important}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" data-presets="react">
+const { useState, useMemo, useRef, useEffect } = React;
+
+const P = {
+  bg1:"#0d0620",bg2:"#1a0a35",bg3:"#2a1050",
+  accent1:"#7c3aed",accent2:"#a855f7",accent3:"#c084fc",
+  pink:"#e879f9",border:"rgba(168,85,247,0.25)",borderHi:"rgba(232,121,249,0.5)",
+  text:"#f3e8ff",textSub:"#c4b5fd",textMuted:"#7c6aaa",
+  green:"#4ade80",red:"#f87171",amber:"#fbbf24",
+  btnGrad:"linear-gradient(135deg,#6d28d9,#a855f7,#e879f9)",
+  headerGrad:"linear-gradient(150deg,#0d0620,#3b0764,#7c3aed,#a855f7)",
+};
+
+const MESES=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+const CUENTAS=["Hogar","Trabajo","Personal"];
+const MONEDAS_DEFAULT=[
+  {code:"ARS",symbol:"$",label:"Peso argentino"},
+  {code:"USD",symbol:"US$",label:"Dólar"},
+  {code:"EUR",symbol:"€",label:"Euro"},
+  {code:"USDT",symbol:"₮",label:"USDT"}
+];
+const COLOR_OPTIONS=["#a855f7","#e879f9","#c084fc","#818cf8","#f472b6","#34d399","#60a5fa","#fbbf24","#f87171","#7c3aed","#06b6d4","#84cc16","#fb923c","#a3e635","#38bdf8","#f43f5e"];
+
+const SVGS={
+  "__pig_money__":["M15 11v.01","M5.173 8.378a3 3 0 1 1 4.656-1.377","M16 4v3.803a6.019 6.019 0 0 1 2.658 3.197h1.341a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-1.342c-.336.95-.907 1.8-1.658 2.473v2.027a1.5 1.5 0 0 1-3 0v-.583a6.04 6.04 0 0 1-1 .083h-4a6.04 6.04 0 0 1-1-.083v.583a1.5 1.5 0 0 1-3 0v-2a6 6 0 0 1 4-10.473h2.5l4.5-3"],
+  "__trash__":["M4 7l16 0","M10 11l0 6","M14 11l0 6","M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12","M9 7v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"],
+  "__car__":["M5 17a2 2 0 1 0 4 0a2 2 0 1 0-4 0","M15 17a2 2 0 1 0 4 0a2 2 0 1 0-4 0","M5 17h-2v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6-6h15m-6 0v-5"],
+  "__edit__":["M7 7h-1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1","M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97l-8.415 8.385v3h3l8.385-8.415","M16 5l3 3"],
+  "__home2__":["M5 12l-2 0l9-9l9 9l-2 0","M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7","M10 12h4v4h-4z"],
+  "__ticket__":["M15 5l0 2","M15 11l0 2","M15 17l0 2","M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2h-14a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4v-3a2 2 0 0 1 2-2"],
+  "__moneybag__":["M9.5 3h5a1.5 1.5 0 0 1 1.5 1.5a3.5 3.5 0 0 1-3.5 3.5h-1a3.5 3.5 0 0 1-3.5-3.5a1.5 1.5 0 0 1 1.5-1.5","M4 17v-1a8 8 0 1 1 16 0v1a4 4 0 0 1-4 4h-8a4 4 0 0 1-4-4"],
+  "__calendar_stats__":["M11.795 21h-6.795a2 2 0 0 1-2-2v-12a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4","M18 14v4h4","M14 18a4 4 0 1 0 8 0a4 4 0 1 0-8 0","M15 3v4","M7 3v4","M3 11h16"],
+  "__settings__":["M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37c1 .608 2.296.07 2.572-1.065","M9 12a3 3 0 1 0 6 0a3 3 0 0 0-6 0"],
+  "__circle_plus__":["M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0","M9 12h6","M12 9v6"],
+  "__square_check__":["M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-14a2 2 0 0 1-2-2v-14","M9 12l2 2l4-4"],
+  "__eye_off__":["M10.585 10.587a2 2 0 0 0 2.829 2.828","M16.681 16.673a8.717 8.717 0 0 1-4.681 1.327c-3.6 0-6.6-2-9-6c1.272-2.12 2.712-3.678 4.32-4.674m2.86-1.146a9.055 9.055 0 0 1 1.82-.18c3.6 0 6.6 2 9 6c-.666 1.11-1.379 2.067-2.138 2.87","M3 3l18 18"],
+  "__eye__":["M10 12a2 2 0 1 0 4 0a2 2 0 0 0-4 0","M3 12c2.4-4 5.4-6 9-6c3.6 0 6.6 2 9 6c-2.4 4-5.4 6-9 6c-3.6 0-6.6-2-9-6"],
+  "__chart_bar__":["M3 13a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z","M15 9a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z","M9 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z","M4 20h14"],
+  "__history__":["M12 8l0 4l2 2","M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5"],
+  "__coin__":["M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0","M14.8 9a2 2 0 0 0-1.8-1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1-1.8-1","M12 7v10"],
+  "__wallet__":["M17 8v-3a1 1 0 0 0-1-1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1-1 1h-12a2 2 0 0 1-2-2v-12","M20 12v4h-4a2 2 0 0 1 0-4h4"],
+  "__flame__":["M12 10.941c2.333-3.308.167-7.823-1-8.941c0 3.395-2.235 5.299-3.667 6.706c-1.43 1.408-2.333 3.294-2.333 5.588c0 3.704 3.134 6.706 7 6.706c3.866 0 7-3.002 7-6.706c0-1.712-1.232-4.403-2.333-5.588c-2.084 3.353-3.257 3.353-4.667 2.235"],
+  "__plug_connected__":["M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1-5-5z","M17 12l-5-5l1.5-1.5a3.536 3.536 0 1 1 5 5z","M3 21l2.5-2.5","M18.5 5.5l2.5-2.5","M10 11l-2 2","M13 14l-2 2"],
+  "__bolt__":["M13 3l0 7l6 0l-8 11l0-7l-6 0l8-11"],
+  "__droplets__":["M4.072 20.3a3 3 0 0 0 4.526-3.798l-2.095-3.227a.6.6 0 0 0-1.005 0l-2.098 3.227a3 3 0 0 0 .671 3.798","M16.072 20.3a3 3 0 0 0 4.526-3.798l-2.095-3.227a.6.6 0 0 0-1.005 0l-2.098 3.227a3 3 0 0 0 .671 3.798","M10.072 10.3a3 3 0 0 0 4.526-3.798l-2.095-3.227a.6.6 0 0 0-1.005 0l-2.098 3.227a3 3 0 0 0 .671 3.798"],
+  "__shield__":["M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1-8.5 15a12 12 0 0 1-8.5-15a12 12 0 0 0 8.5-3"],
+  "__heart__":["M19.5 12.572l-7.5 7.428l-7.5-7.428a5 5 0 1 1 7.5-6.566a5 5 0 1 1 7.5 6.572"],
+  "__smile__":["M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0","M9 10l.01 0","M15 10l.01 0","M9.5 15a3.5 3.5 0 0 0 5 0"],
+  "__diamond__":["M6 5h12l3 5l-8.5 9.5a.7.7 0 0 1-1 0l-8.5-9.5z","M10 12l-2-2.2l.6-1"],
+  "__coffee__":["M3 14c.83.642 2.077 1.017 3.5 1c1.423.017 2.67-.358 3.5-1c.83-.642 2.077-1.017 3.5-1c1.423-.017 2.67.358 3.5 1","M8 3a2.4 2.4 0 0 0-1 2a2.4 2.4 0 0 0 1 2","M12 3a2.4 2.4 0 0 0-1 2a2.4 2.4 0 0 0 1 2","M3 10h14v5a6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6v-5","M16.746 16.726a3 3 0 1 0 .252-5.555"],
+  "__barbell__":["M2 12h1","M6 8h-2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2","M6 7v10a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-10a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1","M9 12h6","M15 7v10a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-10a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1","M18 8h2a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2","M22 12h-1"],
+  "__seedling__":["M12 10a6 6 0 0 0-6-6h-3v2a6 6 0 0 0 6 6h3","M12 14a6 6 0 0 1 6-6h3v1a6 6 0 0 1-6 6h-3","M12 20l0-10"],
+  "__paw__":["M14.7 13.5c-1.1-2-1.441-2.5-2.7-2.5c-1.259 0-1.736.755-2.836 2.747c-.942 1.703-2.846 1.845-3.321 3.291c-.097.265-.145.677-.143.962c0 1.176.787 2 1.8 2c1.259 0 3-1 4.5-1s3.241 1 4.5 1c1.013 0 1.8-.823 1.8-2c0-.285-.049-.697-.146-.962c-.475-1.451-2.512-1.835-3.454-3.538"],
+  "__stethoscope__":["M6 4h-1a2 2 0 0 0-2 2v3.5a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0-2-2h-1","M8 15a6 6 0 1 0 12 0v-3","M11 3v2","M6 3v2","M18 10a2 2 0 1 0 4 0a2 2 0 1 0-4 0"],
+  "__gas_station__":["M14 11h1a2 2 0 0 1 2 2v3a1.5 1.5 0 0 0 3 0v-7l-3-3","M4 20v-14a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14","M3 20l12 0","M18 7v1a1 1 0 0 0 1 1h1","M4 11l10 0"],
+  "__plug__":["M9.785 6l8.215 8.215l-2.054 2.054a5.81 5.81 0 1 1-8.215-8.215z","M4 20l3.5-3.5","M15 4l-3.5 3.5","M20 9l-3.5 3.5"],
+  "__gift__":["M3 9a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-16a1 1 0 0 1-1-1z","M12 8l0 13","M19 12v7a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2v-7","M7.5 8a2.5 2.5 0 0 1 0-5a4.8 8 0 0 1 4.5 5a4.8 8 0 0 1 4.5-5a2.5 2.5 0 0 1 0 5"],
+  "__download__":["M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2","M7 11l5 5l5-5","M12 4l0 12"],
+  "__adjustments__":["M12 6a2 2 0 1 0 4 0a2 2 0 1 0-4 0","M4 6l8 0","M16 6l4 0","M6 12a2 2 0 1 0 4 0a2 2 0 1 0-6 0","M4 12l2 0","M10 12l10 0","M15 18a2 2 0 1 0 4 0a2 2 0 1 0-4 0","M4 18l11 0","M19 18l1 0"],
+  "__logout__":["M14 8v-2a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2","M9 12h12l-3-3","M18 15l3-3"],
+  "__x__":["M18 6l-12 12","M6 6l12 12"],
+  "__check__":["M5 12l5 5l10-10"],
+  "__grip__":["M9 5m-1 0a1 1 0 1 0 2 0a1 1 0 0 0-2 0","M9 12m-1 0a1 1 0 1 0 2 0a1 1 0 0 0-2 0","M9 19m-1 0a1 1 0 1 0 2 0a1 1 0 0 0-2 0","M15 5m-1 0a1 1 0 1 0 2 0a1 1 0 0 0-2 0","M15 12m-1 0a1 1 0 1 0 2 0a1 1 0 0 0-2 0","M15 19m-1 0a1 1 0 1 0 2 0a1 1 0 0 0-2 0"],
+  "__building__":["M3 21l18 0","M9 8l1 0","M9 12l1 0","M9 16l1 0","M14 8l1 0","M14 12l1 0","M14 16l1 0","M5 21v-16a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"],
+  "__phone__":["M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5-2.5l5 2v4a2 2 0 0 1-2 2a16 16 0 0 1-15-15a2 2 0 0 1 2-2"],
+  "__home__":["M5 12l-2 0l9-9l9 9l-2 0","M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7","M9 21v-6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v6"],
+  "__confetti__":["M4 5h2","M5 4v2","M11.5 4l-.5 2","M18 5h2","M19 4v2","M15 9l-1 1","M18 13l2-.5","M18 19h2","M19 18v2","M14 16.518l-6.518-6.518l-4.39 9.58a1 1 0 0 0 1.329 1.329z"],
+  "__sparkles__":["M13 7a9.3 9.3 0 0 0 1.516-.546c.911-.438 1.494-1.015 1.937-1.932c.207-.428.382-.928.547-1.522c.165.595.34 1.095.547 1.521c.443.918 1.026 1.495 1.937 1.933c.426.205.925.38 1.516.546a9.3 9.3 0 0 0-1.516.547c-.911.438-1.494 1.015-1.937 1.932a9 9 0 0 0-.547 1.521c-.165-.594-.34-1.095-.547-1.521c-.443-.918-1.026-1.494-1.937-1.932a9 9 0 0 0-1.516-.547","M3 14a21 21 0 0 0 1.652-.532c2.542-.953 3.853-2.238 4.816-4.806a20 20 0 0 0 .532-1.662a20 20 0 0 0 .532 1.662c.963 2.567 2.275 3.853 4.816 4.806q.75.28 1.652.532a21 21 0 0 0-1.652.532c-2.542.953-3.854 2.238-4.816 4.806a20 20 0 0 0-.532 1.662a20 20 0 0 0-.532-1.662c-.963-2.568-2.275-3.853-4.816-4.806a21 21 0 0 0-1.652-.532"],
+  "__user__":["M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0","M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"],
+  "__users__":["M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0-8 0","M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2","M16 3.13a4 4 0 0 1 0 7.75","M21 21v-2a4 4 0 0 0-3-3.85"],
+  "__switch__":["M3 7h16","M3 12h16","M3 17h16","M18 4l3 3l-3 3","M6 14l-3 3l3 3"],
+  "__printer__":["M17 17h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-14a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2","M17 9v-4a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2v4","M7 15h10v6h-10z"],
+  "__heartbeat__":["M19.5 13.572l-7.5 7.428l-2.896-2.868m-6.117-8.104a5 5 0 0 1 9.013-3.022a5 5 0 1 1 7.5 6.572","M3 13h2l2 3l2-6l1 3h3"],
+  "__tax__":["M8.487 21h7.026a4 4 0 0 0 3.808-5.224l-1.706-5.306a5 5 0 0 0-4.76-3.47h-1.71a5 5 0 0 0-4.76 3.47l-1.706 5.306a4 4 0 0 0 3.808 5.224","M15 3q-1 4-3 4t-3-4l6 0","M14 11h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5","M12 10v1","M12 17v1"],
+};
+
+const ICON_LABELS={
+  "__pig_money__":"Alcancía","__car__":"Auto","__home__":"Casa","__tax__":"Alquiler",
+  "__ticket__":"Ticket","__moneybag__":"Bolsa dinero","__calendar_stats__":"Calendario",
+  "__settings__":"Categorías","__eye__":"Ojo","__eye_off__":"Ocultar",
+  "__chart_bar__":"Gráfico","__history__":"Historial","__coin__":"Moneda","__wallet__":"Billetera",
+  "__flame__":"Fuego","__plug_connected__":"Servicios","__bolt__":"Rayo","__droplets__":"Gotas",
+  "__shield__":"Escudo","__heart__":"Corazón","__heartbeat__":"Latido","__smile__":"Sonrisa",
+  "__diamond__":"Diamante","__coffee__":"Café","__barbell__":"Pesas","__seedling__":"Hojitas",
+  "__paw__":"Pata","__stethoscope__":"Salud","__gas_station__":"Nafta","__plug__":"Enchufe",
+  "__gift__":"Regalo","__building__":"Edificio","__phone__":"Teléfono",
+  "__confetti__":"Fiesta","__sparkles__":"Estrellas","__user__":"Persona","__users__":"Personas","__home2__":"Casa 2",
+  "__adjustments__":"Ajustes","__circle_plus__":"Agregar","__square_check__":"Check",
+  "__trash__":"Eliminar","__edit__":"Editar","__x__":"Cerrar","__check__":"Ok",
+  "__grip__":"Mover","__logout__":"Salir","__switch__":"Cambiar","__printer__":"Imprimir",
+  "__download__":"Descargar"
+};
+const PICKABLE_ICONS=[
+  "__pig_money__","__car__","__home2__","__ticket__","__moneybag__","__calendar_stats__","__eye_off__","__eye__",
+  "__chart_bar__","__history__","__coin__","__wallet__","__flame__","__plug_connected__","__bolt__","__droplets__",
+  "__shield__","__heart__","__smile__","__diamond__","__coffee__","__barbell__","__seedling__","__paw__",
+  "__stethoscope__","__gas_station__","__plug__","__gift__","__adjustments__","__building__","__phone__","__home__",
+  "__confetti__","__sparkles__","__user__","__users__","__heartbeat__","__tax__","__settings__"
+];
+
+// ─── UTILS ────────────────────────────────────────────────────────────────────
+function fmt(n, sym) {
+  return (sym || "$") + new Intl.NumberFormat("es-AR", {maximumFractionDigits: 0}).format(Math.abs(n));
+}
+function today() { return new Date().toISOString().split("T")[0]; }
+function getSess() { try { return JSON.parse(localStorage.getItem("ffs_sess")); } catch(e) { return null; } }
+function saveSess(s) { localStorage.setItem("ffs_sess", JSON.stringify(s)); }
+function clearSess() { localStorage.removeItem("ffs_sess"); }
+function genKey() { return Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2); }
+function genUUID() {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random()*16|0, v = c==='x'?r:(r&0x3|0x8);
+    return v.toString(16);
+  });
+}
+
+const SURL = "https://roxltdierzniyzt" + "wkbho.supabase.co";
+const SKEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJveGx0ZGllcnpuaXl6dHdrYmhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4NzE5NjIsImV4cCI6MjA5NDQ0Nzk2Mn0.P5m5LsfW6ZhYclq-BOBhv0HTK4AXKKeqlX7Jyz6v6Ss";
+
+async function supa(path, opts, token) {
+  opts = opts || {};
+  var t = token || (function() {
+    try { return JSON.parse(localStorage.getItem("ffs_sess")).access_token; } catch(e) { return null; }
+  })() || SKEY;
+  var h = Object.assign({"Content-Type":"application/json","apikey":SKEY,"Authorization":"Bearer "+t}, opts.headers || {});
+  var r = await fetch(SURL + path, Object.assign({}, opts, {headers: h}));
+  if (!r.ok) {
+    var e = await r.json().catch(function(){return {};});
+    if (r.status === 401 || (r.status === 400 && e.message && e.message.includes('API key'))) {
+      clearSess();
+    }
+    throw new Error(e.message || r.statusText);
+  }
+  if (r.status === 204) return null;
+  return r.json();
+}
+
+async function supaAuth(path, body) {
+  var r = await fetch(SURL + "/auth/v1" + path, {
+    method: "POST",
+    headers: {"Content-Type":"application/json","apikey":SKEY},
+    body: JSON.stringify(body)
+  });
+  var d = await r.json();
+  if (d.error || d.error_description) throw new Error(d.error_description || (d.error && d.error.message) || d.msg || "Error");
+  return d;
+}
+
+// ─── ATOMS ───────────────────────────────────────────────────────────────────
+
+function Ico({icon, size, color}) {
+  size = size || 20;
+  color = color || "currentColor";
+  var paths = SVGS[icon];
+  if (!paths) return null;
+  var children = [<path key="bg" stroke="none" d="M0 0h24v24H0z" fill="none"/>];
+  for (var i = 0; i < paths.length; i++) {
+    children.push(<path key={i} d={paths[i]}/>);
+  }
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
+      stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      {children}
+    </svg>
+  );
+}
+
+function FFSLogo({size, color}) {
+  size = size || 20;
+  color = color || P.textMuted;
+  return (
+    <svg width={size} height={size} viewBox="0 0 1620.36 1620.33" style={{fillRule:"evenodd",clipRule:"evenodd"}}>
+      <path fill={color} d="M1144.94 622.95l312.39 180.32 0 -211.61 -312.39 0 0 31.3zm-147.54 521.99l-180.36 312.39 211.63 0 0 -312.39 -31.27 0zm-236.98 410.47l-37.48 64.92 -328.49 -189.67 -64.92 37.52 -189.62 -328.47 -74.98 0 0 -379.29 -64.94 -37.48 189.65 -328.49 -37.48 -64.92 328.47 -189.69 0 -74.91 379.31 0 37.48 -64.94 328.49 189.65 64.9 -37.48 189.62 328.45 74.98 0 0 379.29 64.94 37.48 -189.65 328.47 37.48 64.94 -328.47 189.65 0 74.98 -379.29 0zm-597.4 -738.37l0 211.63 312.39 0 0 -31.27 -312.39 -180.36zm588.62 211.63l117.06 0 101.46 -58.58 58.51 -101.32 0 -117.13 -58.58 -101.46 -101.39 -58.53 -117.06 0 -101.39 58.53 -58.58 101.46 0 117.11 58.51 101.35 101.46 58.58zm51.67 -865.65l-211.63 0 0 312.39 31.27 0 180.36 -312.39zm324.48 83.26l-183.24 -105.82 -156.21 270.53 27.05 15.65 312.39 -180.36zm239.42 234.33l-105.82 -183.26 -270.55 156.21 15.6 27.05 360.77 0zm-227.49 525.82l0 360.72 183.24 -105.79 -156.18 -270.53 -27.05 15.6zm53.99 -191.06l180.36 312.41 105.82 -183.28 -270.55 -156.21 -15.63 27.08zm-713.07 -201.53l0 -360.7 -183.28 105.82 156.21 270.53 27.08 -15.65zm-53.99 191.11l-180.36 -312.43 -105.82 183.28 270.55 156.21 15.63 -27.05zm378.33 388.76l-312.39 180.34 183.26 105.79 156.21 -270.51 -27.08 -15.63zm-191.06 -53.99l-360.77 0 105.82 183.24 270.55 -156.18 -15.6 -27.05z"/>
+    </svg>
+  );
+}
+
+function IconPicker({value, onChange, color}) {
+  color = color || "#a855f7";
+  var [search, setSearch] = useState("");
+  var filtered = PICKABLE_ICONS.filter(function(k) {
+    return !search || (ICON_LABELS[k] || k).toLowerCase().indexOf(search.toLowerCase()) >= 0;
+  });
+  return (
+    <div>
+      <input type="text" placeholder="Buscar ícono..." value={search}
+        onChange={function(e){setSearch(e.target.value);}}
+        style={{width:"100%",boxSizing:"border-box",background:P.bg2,border:"1px solid "+P.border,borderRadius:8,padding:"7px 10px",color:P.text,fontSize:12,outline:"none",marginBottom:8}}/>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(42px,1fr))",gap:5,maxHeight:160,overflowY:"auto"}}>
+        {filtered.map(function(k) {
+          return (
+            <button key={k} onClick={function(){onChange(k);}} title={ICON_LABELS[k]||k}
+              style={{width:42,height:42,borderRadius:9,border:"1.5px solid "+(value===k?color:P.border),background:value===k?color+"25":P.bg2,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>
+              <Ico icon={k} size={18} color={value===k?color:P.textMuted}/>
+            </button>
+          );
+        })}
+      </div>
+      {value && <div style={{marginTop:6,display:"flex",alignItems:"center",gap:6,fontSize:11,color:P.textSub}}><Ico icon={value} size={13} color={color}/>{ICON_LABELS[value]||value}</div>}
+    </div>
+  );
+}
+
+function CatAvatar({cat, size}) {
+  size = size || 36;
+  if (!cat) return <div style={{width:size,height:size,borderRadius:size*0.28,background:P.bg3,flexShrink:0}}/>;
+  return (
+    <div style={{width:size,height:size,borderRadius:size*0.28,background:"rgba(192,132,252,0.15)",border:"1px solid rgba(192,132,252,0.3)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+      <Ico icon={cat.icon} size={size*0.52} color={cat.color||P.accent3}/>
+    </div>
+  );
+}
+
+function ProfileAvatar({profile, size}) {
+  size = size || 32;
+  var col = (profile && profile.color) || P.accent2;
+  return (
+    <div style={{width:size,height:size,borderRadius:"50%",background:col+"22",border:"2px solid "+col+"66",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+      <Ico icon="__user__" size={size*0.5} color={col}/>
+    </div>
+  );
+}
+
+function EstadoBadge({estado, onClick}) {
+  var cfgs = {
+    pagado:{bg:"rgba(52,211,153,0.15)",color:"#34d399",border:"rgba(52,211,153,0.4)",label:"Pagado"},
+    pendiente:{bg:"rgba(251,191,36,0.15)",color:"#fbbf24",border:"rgba(251,191,36,0.4)",label:"Pendiente"},
+    inactivo:{bg:"rgba(100,100,120,0.15)",color:"#9ca3af",border:"rgba(100,100,120,0.3)",label:"Inactivo"}
+  };
+  var cfg = cfgs[estado] || {bg:P.bg3,color:P.textSub,border:P.border,label:estado};
+  return (
+    <button onClick={onClick} title="Cambiar estado"
+      style={{display:"flex",alignItems:"center",gap:4,padding:"5px 12px",borderRadius:20,border:"1px solid "+cfg.border,background:cfg.bg,color:cfg.color,fontSize:11,fontWeight:600,cursor:"pointer",flexShrink:0}}>
+      {cfg.label}
+    </button>
+  );
+}
+
+function IBtn({icon, color, onClick, title, small}) {
+  var sz = small ? 28 : 32;
+  var isz = small ? 13 : 15;
+  return (
+    <button onClick={onClick} title={title}
+      style={{width:sz,height:sz,borderRadius:sz/2,border:"1px solid "+color+"44",background:color+"18",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0}}>
+      <Ico icon={icon} size={isz} color={color}/>
+    </button>
+  );
+}
+
+function Divider({label}) {
+  return (
+    <div style={{display:"flex",alignItems:"center",gap:10,margin:"16px 0 12px"}}>
+      {label && <span style={{fontSize:10,fontWeight:600,color:P.textMuted,letterSpacing:"0.08em",textTransform:"uppercase",whiteSpace:"nowrap"}}>{label}</span>}
+      <div style={{flex:1,height:"0.5px",background:P.border}}/>
+    </div>
+  );
+}
+
+function SectionFooter() {
+  return (
+    <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:7,margin:"28px 0 4px",padding:"14px 0 0",borderTop:"0.5px solid "+P.border}}>
+      <FFSLogo size={16} color={P.textMuted}/>
+      <span style={{fontSize:10,color:P.textMuted,letterSpacing:"0.08em",fontWeight:500}}>© FFS 2026</span>
+    </div>
+  );
+}
+
+function Toast({msg, type}) {
+  if (!msg) return null;
+  return (
+    <div style={{position:"fixed",top:20,left:"50%",transform:"translateX(-50%)",padding:"11px 20px",borderRadius:12,fontSize:13,fontWeight:600,zIndex:9999,whiteSpace:"nowrap",boxShadow:"0 4px 20px rgba(0,0,0,0.4)",background:type==="err"?"rgba(248,113,113,0.15)":"rgba(52,211,153,0.15)",color:type==="err"?P.red:P.green,border:"1px solid "+(type==="err"?"rgba(248,113,113,0.3)":"rgba(52,211,153,0.3)")}}>
+      {msg}
+    </div>
+  );
+}
+
+function Modal({open, onClose, children, title, width}) {
+  width = width || 480;
+  if (!open) return null;
+  return (
+    <div style={{position:"fixed",inset:0,zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center",padding:16}} onClick={onClose}>
+      <div style={{position:"absolute",inset:0,background:"rgba(0,0,0,0.6)"}}/>
+      <div style={{position:"relative",width:"100%",maxWidth:width,maxHeight:"90vh",overflowY:"auto",background:P.bg2,border:"1px solid "+P.border,borderRadius:20,padding:24,boxShadow:"0 20px 60px rgba(0,0,0,0.6)"}}
+        onClick={function(e){e.stopPropagation();}}>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:18}}>
+          <span style={{fontSize:15,fontWeight:700,color:P.text}}>{title}</span>
+          <button onClick={onClose} style={{width:28,height:28,borderRadius:8,border:"1px solid "+P.border,background:P.bg3,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>
+            <Ico icon="__x__" size={14} color={P.textMuted}/>
+          </button>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function PieDonut({data, sym, priv}) {
+  var total = data.reduce(function(s,d){return s+d.value;}, 0);
+  var angle = -Math.PI/2;
+  var slices = data.map(function(d) {
+    var a = (d.value/total)*2*Math.PI;
+    var x1 = 85+75*Math.cos(angle), y1 = 85+75*Math.sin(angle);
+    angle += a;
+    var x2 = 85+75*Math.cos(angle), y2 = 85+75*Math.sin(angle);
+    var path;
+    if (a >= 2*Math.PI - 0.001) {
+      path = "M85,10 A75,75 0 1,1 84.999,10 Z";
+    } else {
+      path = "M85,85 L"+x1+","+y1+" A75,75 0 "+(a>Math.PI?1:0)+",1 "+x2+","+y2+" Z";
+    }
+    return {path:path, col:d.cat.color||P.accent2, label:d.cat.nombre, value:d.value};
+  });
+  var totalFmt = priv ? "•••" : sym+new Intl.NumberFormat("es-AR",{maximumFractionDigits:0}).format(total);
+  return (
+    <div style={{display:"flex",gap:20,alignItems:"center",flexWrap:"wrap"}}>
+      <svg width="170" height="170" viewBox="0 0 170 170">
+        {slices.map(function(s,i){return <path key={i} d={s.path} fill={s.col}/>;} )}
+        <circle cx="85" cy="85" r="38" fill={P.bg2}/>
+        <text x="85" y="81" textAnchor="middle" style={{fontSize:9,fill:P.textMuted}}>Total</text>
+        <text x="85" y="95" textAnchor="middle" style={{fontSize:9,fill:P.text,fontWeight:500}}>{totalFmt}</text>
+      </svg>
+      <div style={{display:"flex",flexDirection:"column",gap:8,flex:1}}>
+        {slices.map(function(s,i){
+          return (
+            <div key={i} style={{display:"flex",alignItems:"center",gap:8}}>
+              <span style={{width:10,height:10,borderRadius:3,background:s.col,flexShrink:0}}/>
+              <span style={{flex:1,fontSize:12,color:P.textSub}}>{s.label}</span>
+              <span style={{fontSize:12,fontWeight:600,color:P.text}}>{Math.round(s.value/total*100)}%</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ─── APP ──────────────────────────────────────────────────────────────────────
+function App() {
+  var [user,setUser] = useState(null);
+  var [profile,setProfile] = useState(null);
+  var [profiles,setProfiles] = useState([]);
+  var [activeProfileKey,setActiveProfileKey] = useState(null);
+  var [authMode,setAuthMode] = useState("login");
+  var [authForm,setAuthForm] = useState({email:"",pass:"",nombre:""});
+  var [authErr,setAuthErr] = useState("");
+  var [authLoading,setAuthLoading] = useState(false);
+  var [booting,setBooting] = useState(true);
+  var [cats,setCats] = useState([]);
+  var [movs,setMovs] = useState([]);
+  var [servicios,setServicios] = useState([]);
+  var [monedas] = useState(MONEDAS_DEFAULT);
+  var [monedaCode,setMonedaCode] = useState("ARS");
+  var [view,setView] = useState("dashboard");
+  var [toast,setToast] = useState(null);
+  var [privacyMode,setPrivacyMode] = useState(false);
+  var [form,setForm] = useState({fecha:today(),tipo:"egreso",cuenta:"Hogar",catId:"",subId:"",monto:"",desc:"",moneda:"ARS"});
+  var [editMovId,setEditMovId] = useState(null);
+  var [filtros,setFiltros] = useState({cuenta:"",tipo:"",catId:"",mes:""});
+  var [expandedCatId,setExpandedCatId] = useState(null);
+  var [editingCat,setEditingCat] = useState(null);
+  var [showNewCat,setShowNewCat] = useState(false);
+  var [newCat,setNewCat] = useState({nombre:"",icon:"__coin__",color:P.accent2});
+  var [newSubNombre,setNewSubNombre] = useState({});
+  var [editingSub,setEditingSub] = useState(null);
+  var [editingSrv,setEditingSrv] = useState(null);
+  var [showNewSrv,setShowNewSrv] = useState(false);
+  var [newSrv,setNewSrv] = useState({nombre:"",icon:"__plug__",monto:"",montoVariable:false,estado:"pendiente"});
+  var [montoSrvPending,setMontoSrvPending] = useState(null);
+  var [montoSrvInput,setMontoSrvInput] = useState("");
+  var [exportMes,setExportMes] = useState(function(){var n=new Date();return n.getFullYear()+"-"+String(n.getMonth()+1).padStart(2,"0");});
+  var [showProfileModal,setShowProfileModal] = useState(false);
+  var [showProfilesPanel,setShowProfilesPanel] = useState(false);
+  var [editProfileForm,setEditProfileForm] = useState({nombre:"",avatar:"__user__",color:"#a855f7"});
+  var [showNewProfile,setShowNewProfile] = useState(false);
+  var [newProfileForm,setNewProfileForm] = useState({nombre:"",avatar:"__heart__",color:"#e879f9"});
+
+  var catDragSrc = useRef(null);
+  var srvDragSrc = useRef(null);
+  var subDragSrc = useRef(null);
+
+  function showToast(msg, type) {
+    setToast({msg:msg, type:type||"ok"});
+    setTimeout(function(){setToast(null);}, 3000);
+  }
+
+  var moneda = monedas.find(function(m){return m.code===monedaCode;}) || monedas[0];
+  var sym = moneda.symbol;
+
+  function getCat(id) {
+    if (id === null || id === undefined || id === "" ) return null;
+    var nid = Number(id);
+    return cats.find(function(c){ return c.id === nid || c.id === id; });
+  }
+  function getMonSym(code) {
+    var m = monedas.find(function(m){return m.code===code;});
+    return m ? m.symbol : monedas[0].symbol;
+  }
+  function fmtP(n, s) { return privacyMode ? "•••" : fmt(n, s); }
+
+  var iS = {width:"100%",boxSizing:"border-box",border:"none",background:"transparent",padding:"9px 12px",fontSize:13,outline:"none",color:P.text};
+  var sS = Object.assign({}, iS, {cursor:"pointer"});
+  var card = {background:P.bg2,border:"1px solid "+P.border,borderRadius:16,padding:"18px",marginBottom:12};
+
+  useEffect(function(){
+    (async function(){
+      var sess = getSess();
+      if (sess && sess.access_token) {
+        try {
+          var r = await fetch(SURL+"/auth/v1/user", {headers:{"apikey":SKEY,"Authorization":"Bearer "+sess.access_token}});
+          if (r.ok) {
+            var u = await r.json();
+            setUser(u);
+            var pk = localStorage.getItem("ffs_profile_key") || null;
+            await loadAll(u, sess.access_token, pk);
+            setBooting(false);
+            return;
+          }
+        } catch(e) {}
+        clearSess();
+      }
+      setBooting(false);
+    })();
+  }, []);
+
+  async function loadAll(u, token, pk) {
+    try {
+      var pRows = await supa("/rest/v1/profiles?user_id=eq."+u.id+"&order=created_at", {}, token).catch(function(){return [];});
+      var allProfiles = pRows || [];
+      var activeKey = pk;
+      var activeProf = null;
+      if (allProfiles.length === 0) {
+        var defaultKey = genKey();
+        var created = await supa("/rest/v1/profiles", {method:"POST",headers:{"Prefer":"return=representation"},body:JSON.stringify({user_id:u.id,nombre:u.email.split("@")[0],avatar:"__user__",color:"#e879f9",moneda_code:"ARS",profile_key:defaultKey,updated_at:new Date().toISOString()})}, token);
+        activeProf = (created && created[0]) || {nombre:u.email.split("@")[0],avatar:"__heart__",color:"#e879f9",profile_key:defaultKey};
+        activeKey = defaultKey;
+        setProfiles([activeProf]);
+      } else {
+        setProfiles(allProfiles);
+        activeProf = allProfiles.find(function(p){return p.profile_key===activeKey;}) || allProfiles[0];
+        activeKey = activeProf ? activeProf.profile_key : allProfiles[0].profile_key;
+      }
+      setProfile(activeProf);
+      setActiveProfileKey(activeKey);
+      if (activeKey) localStorage.setItem("ffs_profile_key", activeKey);
+      if (activeProf && activeProf.moneda_code) setMonedaCode(activeProf.moneda_code);
+      await loadProfileData(u, token, activeKey);
+    } catch(e) { showToast("Datos: "+e.message,"err"); console.error("loadProfileData error:",e); }
+  }
+
+  async function loadProfileData(u, token, pk) {
+    var pkFilter = pk ? "&profile_key=eq."+pk : "";
+    try {
+      var cR = await supa("/rest/v1/categorias?user_id=eq."+u.id+pkFilter+"&order=orden.asc,id.asc", {}, token);
+      var sR = await supa("/rest/v1/subcategorias?user_id=eq."+u.id+pkFilter+"&order=orden.asc,id.asc", {}, token);
+      var mR = await supa("/rest/v1/movimientos?user_id=eq."+u.id+pkFilter+"&order=fecha.desc,created_at.desc", {}, token);
+      var srR = await supa("/rest/v1/servicios?user_id=eq."+u.id+pkFilter+"&order=orden.asc,id.asc", {}, token);
+      var catsData = (cR||[]).map(function(c){
+        return Object.assign({}, c, {subs:(sR||[]).filter(function(s){return s.categoria_id===c.id;})});
+      });
+      setCats(catsData);
+      setMovs(mR||[]);
+      setServicios(srR||[]);
+    } catch(e) { showToast("Error: "+e.message,"err"); console.error("loadProfileData:",e); }
+  }
+
+  async function switchProfile(pk) {
+    if (pk === activeProfileKey) return;
+    var prof = profiles.find(function(p){return p.profile_key===pk;});
+    if (!prof) return;
+    setActiveProfileKey(pk);
+    setProfile(prof);
+    localStorage.setItem("ffs_profile_key", pk);
+    if (prof.moneda_code) setMonedaCode(prof.moneda_code);
+    setCats([]); setMovs([]); setServicios([]);
+    var sess = getSess();
+    await loadProfileData(user, sess&&sess.access_token, pk);
+    setShowProfilesPanel(false);
+    showToast("Perfil: "+prof.nombre);
+  }
+
+  function openProfileEdit() {
+    setEditProfileForm({nombre:profile&&profile.nombre||"",avatar:profile&&profile.avatar||"__user__",color:profile&&profile.color||P.accent2});
+    setShowProfileModal(true);
+  }
+
+  async function saveProfile() {
+    var sess = getSess();
+    try {
+      await supa("/rest/v1/profiles?user_id=eq."+user.id+"&profile_key=eq."+activeProfileKey,
+        {method:"PATCH",body:JSON.stringify({nombre:editProfileForm.nombre,avatar:"__user__",color:editProfileForm.color,updated_at:new Date().toISOString()})},
+        sess&&sess.access_token);
+      var updated = Object.assign({}, profile, editProfileForm);
+      setProfile(updated);
+      setProfiles(function(p){return p.map(function(pr){return pr.profile_key===activeProfileKey?Object.assign({},pr,editProfileForm):pr;});});
+      setShowProfileModal(false);
+      showToast("Perfil actualizado");
+    } catch(e) { showToast(e.message,"err"); }
+  }
+
+  async function createProfile() {
+    if (!newProfileForm.nombre.trim()) { showToast("Ingresá un nombre","err"); return; }
+    var sess = getSess();
+    var newKey = genKey();
+    try {
+      var r = await supa("/rest/v1/profiles", {method:"POST",headers:{"Prefer":"return=representation"},body:JSON.stringify({user_id:user.id,nombre:newProfileForm.nombre,avatar:"__user__",color:newProfileForm.color,moneda_code:monedaCode,profile_key:newKey,updated_at:new Date().toISOString()})}, sess&&sess.access_token);
+      var newProf = (r&&r[0]) || {nombre:newProfileForm.nombre,avatar:newProfileForm.avatar,color:newProfileForm.color,profile_key:newKey};
+      setProfiles(function(p){return p.concat([newProf]);});
+      setNewProfileForm({nombre:"",avatar:"__heart__",color:"#e879f9"});
+      setShowNewProfile(false);
+      showToast("Perfil creado");
+    } catch(e) { showToast(e.message,"err"); }
+  }
+
+  async function deleteProfile(pk) {
+    if (profiles.length <= 1) { showToast("No podés eliminar el único perfil","err"); return; }
+    if (!confirm("¿Eliminar este perfil y todos sus datos?")) return;
+    var sess = getSess();
+    try {
+      await supa("/rest/v1/movimientos?user_id=eq."+user.id+"&profile_key=eq."+pk, {method:"DELETE"}, sess&&sess.access_token);
+      await supa("/rest/v1/servicios?user_id=eq."+user.id+"&profile_key=eq."+pk, {method:"DELETE"}, sess&&sess.access_token);
+      await supa("/rest/v1/subcategorias?user_id=eq."+user.id+"&profile_key=eq."+pk, {method:"DELETE"}, sess&&sess.access_token);
+      await supa("/rest/v1/categorias?user_id=eq."+user.id+"&profile_key=eq."+pk, {method:"DELETE"}, sess&&sess.access_token);
+      await supa("/rest/v1/profiles?user_id=eq."+user.id+"&profile_key=eq."+pk, {method:"DELETE"}, sess&&sess.access_token);
+      var remaining = profiles.filter(function(p){return p.profile_key!==pk;});
+      setProfiles(remaining);
+      if (pk === activeProfileKey) await switchProfile(remaining[0].profile_key);
+      showToast("Perfil eliminado");
+    } catch(e) { showToast(e.message,"err"); }
+  }
+
+  async function doAuth() {
+    setAuthErr(""); setAuthLoading(true);
+    try {
+      var data;
+      if (authMode === "login") {
+        data = await supaAuth("/token?grant_type=password", {email:authForm.email,password:authForm.pass});
+      } else {
+        data = await supaAuth("/signup", {email:authForm.email,password:authForm.pass});
+        if (data.user && !data.session) { setAuthErr("Revisá tu email."); setAuthLoading(false); return; }
+      }
+      var session = data.session || data;
+      var u = data.user || (data.session&&data.session.user) || data;
+      if (!u || !u.id) throw new Error("No se pudo obtener el usuario");
+      saveSess(session);
+      setUser(u);
+      var savedPk = localStorage.getItem("ffs_profile_key") || null;
+      await loadAll(u, session.access_token, savedPk);
+    } catch(e) { setAuthErr(e.message); }
+    setAuthLoading(false);
+  }
+
+  async function doLogout() {
+    try { await supa("/auth/v1/logout", {method:"POST"}); } catch(e) {}
+    clearSess();
+    setUser(null); setProfile(null); setProfiles([]);
+    setCats([]); setMovs([]); setServicios([]);
+    setView("dashboard");
+  }
+
+  // CATS
+  async function addCat() {
+    if (!newCat.nombre.trim()) { showToast("Ingresá un nombre","err"); return; }
+    try {
+      var r = await supa("/rest/v1/categorias", {method:"POST",headers:{"Prefer":"return=representation"},body:JSON.stringify({user_id:user.id,nombre:newCat.nombre,icon:newCat.icon,color:newCat.color,orden:cats.length,profile_key:activeProfileKey})});
+      setCats(function(p){return p.concat([Object.assign({},r[0],{subs:[]})]);});
+      setNewCat({nombre:"",icon:"__coin__",color:P.accent2});
+      setShowNewCat(false);
+      showToast("Categoría agregada");
+    } catch(e) { showToast(e.message,"err"); }
+  }
+  async function updateCat(id, data) {
+    try {
+      await supa("/rest/v1/categorias?id=eq."+id, {method:"PATCH",body:JSON.stringify(data)});
+      setCats(function(p){return p.map(function(c){return c.id===id?Object.assign({},c,data):c;});});
+      setEditingCat(null); showToast("Actualizada");
+    } catch(e) { showToast(e.message,"err"); }
+  }
+  async function deleteCat(id) {
+    if (!confirm("¿Eliminar categoría?")) return;
+    try {
+      await supa("/rest/v1/categorias?id=eq."+id, {method:"DELETE"});
+      setCats(function(p){return p.filter(function(c){return c.id!==id;});});
+      showToast("Eliminada");
+    } catch(e) { showToast(e.message,"err"); }
+  }
+  async function addSub(catId) {
+    var nombre = (newSubNombre[catId]||"").trim();
+    if (!nombre) { showToast("Ingresá un nombre","err"); return; }
+    try {
+      var r = await supa("/rest/v1/subcategorias", {method:"POST",headers:{"Prefer":"return=representation"},body:JSON.stringify({user_id:user.id,categoria_id:catId,nombre:nombre,obs:"",profile_key:activeProfileKey})});
+      setCats(function(p){return p.map(function(c){return c.id===catId?Object.assign({},c,{subs:c.subs.concat([r[0]])}):c;});});
+      setNewSubNombre(function(n){return Object.assign({},n,{[catId]:""});});
+      showToast('"'+nombre+'" agregada');
+    } catch(e) { showToast(e.message,"err"); }
+  }
+  async function updateSub(sub) {
+    try {
+      await supa("/rest/v1/subcategorias?id=eq."+sub.id, {method:"PATCH",body:JSON.stringify({nombre:sub.nombre,obs:sub.obs})});
+      setCats(function(p){return p.map(function(c){return Object.assign({},c,{subs:c.subs.map(function(s){return s.id===sub.id?Object.assign({},s,sub):s;})});});});
+      setEditingSub(null); showToast("Guardado");
+    } catch(e) { showToast(e.message,"err"); }
+  }
+  async function deleteSub(catId, subId) {
+    try {
+      await supa("/rest/v1/subcategorias?id=eq."+subId, {method:"DELETE"});
+      setCats(function(p){return p.map(function(c){return c.id===catId?Object.assign({},c,{subs:c.subs.filter(function(s){return s.id!==subId;})}):c;});});
+      showToast("Eliminada");
+    } catch(e) { showToast(e.message,"err"); }
+  }
+
+  // MOVS
+  async function submitMov() {
+    if (!form.monto||!form.catId||!form.fecha) { showToast("Completá categoría, monto y fecha","err"); return; }
+    var monto = parseFloat(form.monto);
+    if (isNaN(monto)||monto<=0) { showToast("Monto inválido","err"); return; }
+    var data = {fecha:form.fecha,tipo:form.tipo,cuenta:form.cuenta,cat_id:+form.catId||null,sub_id:form.subId?+form.subId:null,monto:monto,descripcion:form.desc,moneda:form.moneda};
+    try {
+      if (editMovId) {
+        await supa("/rest/v1/movimientos?id=eq."+editMovId, {method:"PATCH",body:JSON.stringify(data)});
+        setMovs(function(p){return p.map(function(m){return m.id===editMovId?Object.assign({},m,data):m;});});
+        showToast("Actualizado"); setEditMovId(null);
+      } else {
+        var r = await supa("/rest/v1/movimientos", {method:"POST",headers:{"Prefer":"return=representation"},body:JSON.stringify(Object.assign({user_id:user.id,profile_key:activeProfileKey},data))});
+        setMovs(function(p){return [r[0]].concat(p);});
+        showToast("Guardado");
+      }
+      setForm({fecha:today(),tipo:"egreso",cuenta:"Hogar",catId:"",subId:"",monto:"",desc:"",moneda:monedaCode});
+      setView("lista");
+    } catch(e) { showToast(e.message,"err"); }
+  }
+  async function deleteMov(id) {
+    if (!confirm("¿Eliminar?")) return;
+    try {
+      await supa("/rest/v1/movimientos?id=eq."+id, {method:"DELETE"});
+      setMovs(function(p){return p.filter(function(m){return m.id!==id;});});
+      showToast("Eliminado");
+    } catch(e) { showToast(e.message,"err"); }
+  }
+
+  // SERVICIOS
+  async function addSrv() {
+    if (!newSrv.nombre.trim()) { showToast("Ingresá un nombre","err"); return; }
+    try {
+      var r = await supa("/rest/v1/servicios", {method:"POST",headers:{"Prefer":"return=representation"},body:JSON.stringify({user_id:user.id,nombre:newSrv.nombre,icon:newSrv.icon,estado:newSrv.estado,monto:newSrv.montoVariable?0:parseFloat(newSrv.monto)||0,monto_variable:newSrv.montoVariable,orden:servicios.length,profile_key:activeProfileKey})});
+      setServicios(function(p){return p.concat([r[0]]);});
+      setNewSrv({nombre:"",icon:"__plug__",monto:"",montoVariable:false,estado:"pendiente"});
+      setShowNewSrv(false); showToast("Servicio agregado");
+    } catch(e) { showToast(e.message,"err"); }
+  }
+  async function updateSrv(id, data) {
+    try {
+      await supa("/rest/v1/servicios?id=eq."+id, {method:"PATCH",body:JSON.stringify(data)});
+      setServicios(function(p){return p.map(function(s){return s.id===id?Object.assign({},s,data):s;});});
+      setEditingSrv(null); showToast("Actualizado");
+    } catch(e) { showToast(e.message,"err"); }
+  }
+  async function deleteSrv(id) {
+    if (!confirm("¿Eliminar?")) return;
+    try {
+      await supa("/rest/v1/servicios?id=eq."+id, {method:"DELETE"});
+      setServicios(function(p){return p.filter(function(s){return s.id!==id;});});
+      showToast("Eliminado");
+    } catch(e) { showToast(e.message,"err"); }
+  }
+  async function toggleEstado(id) {
+    var s = servicios.find(function(x){return x.id===id;});
+    if (!s) return;
+    var next = {pagado:"pendiente",pendiente:"inactivo",inactivo:"pagado"}[s.estado]||"pendiente";
+    if (next==="pagado" && s.monto_variable) {
+      setMontoSrvPending({id:id, next:next, nombre:s.nombre});
+      return;
+    }
+    if (next==="pendiente" && s.monto_variable) {
+      await updateSrv(id, {estado:next, monto:0});
+      return;
+    }
+    await updateSrv(id, {estado:next});
+  }
+
+  // DRAG
+  async function onCatDragEnd() {
+    for (var i=0;i<cats.length;i++) {
+      await supa("/rest/v1/categorias?id=eq."+cats[i].id, {method:"PATCH",body:JSON.stringify({orden:i})});
+    }
+  }
+  async function onSrvDragEnd() {
+    for (var i=0;i<servicios.length;i++) {
+      await supa("/rest/v1/servicios?id=eq."+servicios[i].id, {method:"PATCH",body:JSON.stringify({orden:i})});
+    }
+  }
+
+  // EXPORT CSV
+  function exportCSV() {
+    var parts = exportMes.split("-");
+    var y = +parts[0], mo = +parts[1];
+    var data = movs.filter(function(m){var d=new Date(m.fecha);return d.getFullYear()===y&&d.getMonth()+1===mo;});
+    var rows = [["Fecha","Tipo","Cuenta","Categoría","Subcategoría","Monto","Moneda","Descripción"]];
+    data.forEach(function(m){
+      var cat=getCat(m.cat_id);
+      var sub=cat&&cat.subs?cat.subs.find(function(s){return s.id===m.sub_id;}):null;
+      rows.push([m.fecha,m.tipo,m.cuenta||"",cat&&cat.nombre||"",sub&&sub.nombre||"",m.monto,m.moneda||"ARS",m.descripcion||""]);
+    });
+    var ing=data.filter(function(m){return m.tipo==="ingreso";}).reduce(function(s,m){return s+Number(m.monto);},0);
+    var eg=data.filter(function(m){return m.tipo==="egreso";}).reduce(function(s,m){return s+Number(m.monto);},0);
+    rows.push([],["RESUMEN"],["Ingresos","","","","",ing],["Egresos","","","","",eg],["Balance","","","","",(ing-eg)]);
+    var csv=rows.map(function(r){return r.map(function(v){return '"'+String(v).replace(/"/g,'""')+'"';}).join(",");}).join("\n");
+    var blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8;"});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement("a");a.href=url;a.download="ffs_"+exportMes+".csv";a.click();
+    URL.revokeObjectURL(url);
+    showToast("CSV descargado ✓");
+  }
+
+  // EXPORT PDF
+  function exportPDF() {
+    var parts = exportMes.split("-");
+    var y = +parts[0], mo = +parts[1];
+    var data = movs.filter(function(m){var d=new Date(m.fecha);return d.getFullYear()===y&&d.getMonth()+1===mo;});
+    var ing=data.filter(function(m){return m.tipo==="ingreso";}).reduce(function(s,m){return s+Number(m.monto);},0);
+    var eg=data.filter(function(m){return m.tipo==="egreso";}).reduce(function(s,m){return s+Number(m.monto);},0);
+    var mesNombre=MESES[mo-1]+" "+y;
+    var profNombre=profile&&profile.nombre||"";
+    var nf=new Intl.NumberFormat("es-AR",{maximumFractionDigits:0});
+    var rowsHtml=data.map(function(m){
+      var cat=getCat(m.cat_id);
+      var sub=cat&&cat.subs?cat.subs.find(function(s){return s.id===m.sub_id;}):null;
+      var msym=getMonSym(m.moneda);
+      var isIng=m.tipo==="ingreso";
+      return "<tr><td>"+m.fecha+"</td><td>"+(cat&&cat.nombre||"—")+(sub?" / "+sub.nombre:"")+"</td><td>"+(m.cuenta||"")+"</td><td style='color:"+(isIng?"#166534":"#991b1b")+";font-weight:600'>"+(isIng?"+":"-")+msym+nf.format(Math.abs(m.monto))+"</td><td style='color:#555'>"+(m.descripcion||"")+"</td></tr>";
+    }).join("");
+    var html="<!DOCTYPE html><html><head><meta charset='UTF-8'/><title>FFS — "+mesNombre+"</title><style>body{font-family:system-ui,sans-serif;color:#111;padding:32px;max-width:900px;margin:0 auto}h1{font-size:22px;margin:0 0 4px}.sub{font-size:13px;color:#666;margin-bottom:24px}.summary{display:flex;gap:16px;margin-bottom:24px}.card{flex:1;border:1px solid #ddd;border-radius:10px;padding:14px 18px}.card .label{font-size:11px;text-transform:uppercase;color:#888;margin-bottom:4px}.card .val{font-size:20px;font-weight:700}.ing .val{color:#166534}.eg .val{color:#991b1b}.bal .val{color:"+(ing-eg>=0?"#166534":"#991b1b")+"}table{width:100%;border-collapse:collapse;font-size:13px}th{background:#f3f4f6;padding:9px 12px;text-align:left;font-size:11px;text-transform:uppercase;color:#888;border-bottom:2px solid #e5e7eb}td{padding:9px 12px;border-bottom:1px solid #f3f4f6}.footer{margin-top:32px;text-align:center;font-size:11px;color:#aaa}</style></head><body><h1>FFS Finanzas"+(profNombre?" — "+profNombre:"")+"</h1><div class='sub'>"+mesNombre+" · "+data.length+" registros</div><div class='summary'><div class='card ing'><div class='label'>Ingresos</div><div class='val'>"+sym+nf.format(ing)+"</div></div><div class='card eg'><div class='label'>Egresos</div><div class='val'>"+sym+nf.format(eg)+"</div></div><div class='card bal'><div class='label'>Balance</div><div class='val'>"+sym+nf.format(ing-eg)+"</div></div></div><table><thead><tr><th>Fecha</th><th>Categoría</th><th>Cuenta</th><th>Monto</th><th>Descripción</th></tr></thead><tbody>"+(rowsHtml||"<tr><td colspan='5' style='text-align:center;color:#aaa;padding:24px'>Sin movimientos</td></tr>")+"</tbody></table><div class='footer'>Generado por FFS · "+new Date().toLocaleDateString("es-AR")+"</div></body></html>";
+    var w=window.open("","_blank","width=900,height=700");
+    w.document.write(html);
+    w.document.close();
+    w.onload=function(){w.focus();w.print();};
+    showToast("Abriendo PDF ✓");
+  }
+
+  // DATA
+  var now = new Date();
+  var mesLabel = MESES[now.getMonth()]+" "+now.getFullYear();
+
+  var mesActual = useMemo(function(){
+    return movs.filter(function(m){
+      var d=new Date(m.fecha);
+      return d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth();
+    });
+  }, [movs]);
+
+  var ingresos = mesActual.filter(function(m){return m.tipo==="ingreso";}).reduce(function(s,m){return s+Number(m.monto);},0);
+  var egresos = mesActual.filter(function(m){return m.tipo==="egreso";}).reduce(function(s,m){return s+Number(m.monto);},0);
+  var balance = ingresos - egresos;
+
+  var pieData = useMemo(function(){
+    var map={};
+    mesActual.filter(function(m){return m.tipo==="egreso";}).forEach(function(m){
+      map[m.cat_id]=(map[m.cat_id]||0)+Number(m.monto);
+    });
+    return Object.entries(map).map(function(entry){
+      return {cat:getCat(+entry[0]),value:entry[1]};
+    }).filter(function(d){return d.cat;}).sort(function(a,b){return b.value-a.value;});
+  }, [mesActual,cats]);
+
+  var barData = useMemo(function(){
+    var map={};
+    movs.forEach(function(m){
+      var d=new Date(m.fecha);
+      var k=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");
+      if(!map[k])map[k]={ing:0,eg:0};
+      map[k][m.tipo==="ingreso"?"ing":"eg"]+=Number(m.monto);
+    });
+    return Object.entries(map).sort(function(a,b){return a[0].localeCompare(b[0]);}).slice(-5);
+  }, [movs]);
+
+  var filteredMovs = useMemo(function(){
+    return movs.filter(function(m){
+      if(filtros.cuenta&&m.cuenta!==filtros.cuenta)return false;
+      if(filtros.tipo&&m.tipo!==filtros.tipo)return false;
+      if(filtros.catId&&String(m.cat_id)!==filtros.catId)return false;
+      if(filtros.mes){
+        var parts=filtros.mes.split("-");
+        var md=new Date(m.fecha);
+        if(md.getFullYear()!==+parts[0]||md.getMonth()+1!==+parts[1])return false;
+      }
+      return true;
+    });
+  }, [movs,filtros]);
+
+  var exportMeses=[];
+  for(var ei=0;ei<12;ei++){
+    var ed=new Date(now.getFullYear(),now.getMonth()-ei,1);
+    exportMeses.push({val:ed.getFullYear()+"-"+String(ed.getMonth()+1).padStart(2,"0"),label:MESES[ed.getMonth()]+" "+ed.getFullYear()});
+  }
+
+  var NAV=[
+    {id:"dashboard",icon:"__chart_bar__",label:"Resumen",color:P.accent3},
+    {id:"nuevo",icon:"__circle_plus__",label:"Agregar",color:P.pink,highlight:true},
+    {id:"lista",icon:"__history__",label:"Movimientos",color:"#818cf8"},
+    {id:"categorias",icon:"__settings__",label:"Categorías",color:P.accent2},
+    {id:"servicios",icon:"__plug_connected__",label:"Servicios",color:"#f472b6"},
+    {id:"exportar",icon:"__download__",label:"Exportar",color:P.green,sidebarOnly:true},
+  ];
+
+  function navTo(id) { setView(id); setEditMovId(null); if(id==="lista") setFiltros({cuenta:"",tipo:"",catId:"",mes:""}); }
+
+  if (booting) return (
+    <div style={{display:"flex",alignItems:"center",justifyContent:"center",minHeight:"100vh",background:P.bg1,flexDirection:"column",gap:16}}>
+      <FFSLogo size={40} color={P.accent2}/>
+      <div style={{width:32,height:32,border:"3px solid "+P.border,borderTopColor:P.accent2,borderRadius:"50%",animation:"spin 0.8s linear infinite"}}/>
+      <span style={{fontSize:13,color:P.textMuted}}>Conectando...</span>
+    </div>
+  );
+
+  if (!user) return (
+    <div style={{display:"flex",alignItems:"center",justifyContent:"center",minHeight:"100vh",padding:20,background:P.bg1}}>
+      <div style={{background:P.bg2,border:"1px solid "+P.border,borderRadius:20,padding:"32px 28px",width:"100%",maxWidth:400}}>
+        <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:28,justifyContent:"center"}}>
+          <FFSLogo size={28} color={P.accent2}/>
+          <div>
+            <div style={{fontSize:14,fontWeight:700,color:P.text}}>FloraFauna Finanzas</div>
+            <div style={{fontSize:10,color:P.textMuted}}>Tu economía personal</div>
+          </div>
+        </div>
+        <div style={{display:"flex",gap:0,marginBottom:24,background:P.bg3,borderRadius:10,padding:4}}>
+          {["login","register"].map(function(m,i){
+            return <button key={m} onClick={function(){setAuthMode(m);}} style={{flex:1,padding:9,border:"none",background:authMode===m?P.accent1:"transparent",color:authMode===m?"#fff":P.textMuted,fontSize:13,fontWeight:600,cursor:"pointer",borderRadius:8}}>{i===0?"Iniciar sesión":"Registrarse"}</button>;
+          })}
+        </div>
+        {authErr&&<div style={{background:"rgba(248,113,113,0.12)",border:"1px solid rgba(248,113,113,0.3)",color:P.red,borderRadius:10,padding:"10px 14px",fontSize:13,marginBottom:12}}>{authErr}</div>}
+        {authMode==="register"&&(
+          <div style={{marginBottom:14}}>
+            <label style={{display:"block",fontSize:11,color:P.textMuted,fontWeight:600,letterSpacing:"0.07em",textTransform:"uppercase",marginBottom:5}}>Nombre</label>
+            <div style={{border:"1px solid "+P.border,borderRadius:10,overflow:"hidden",background:P.bg3}}>
+              <input type="text" placeholder="Tu nombre..." value={authForm.nombre} onChange={function(e){setAuthForm(function(f){return Object.assign({},f,{nombre:e.target.value});});}} style={iS}/>
+            </div>
+          </div>
+        )}
+        <div style={{marginBottom:14}}>
+          <label style={{display:"block",fontSize:11,color:P.textMuted,fontWeight:600,letterSpacing:"0.07em",textTransform:"uppercase",marginBottom:5}}>Email</label>
+          <div style={{border:"1px solid "+P.border,borderRadius:10,overflow:"hidden",background:P.bg3}}>
+            <input type="email" placeholder="tu@email.com" value={authForm.email} onChange={function(e){setAuthForm(function(f){return Object.assign({},f,{email:e.target.value});});}} onKeyDown={function(e){if(e.key==="Enter")doAuth();}} style={iS}/>
+          </div>
+        </div>
+        <div style={{marginBottom:20}}>
+          <label style={{display:"block",fontSize:11,color:P.textMuted,fontWeight:600,letterSpacing:"0.07em",textTransform:"uppercase",marginBottom:5}}>Contraseña</label>
+          <div style={{border:"1px solid "+P.border,borderRadius:10,overflow:"hidden",background:P.bg3}}>
+            <input type="password" placeholder="••••••••" value={authForm.pass} onChange={function(e){setAuthForm(function(f){return Object.assign({},f,{pass:e.target.value});});}} onKeyDown={function(e){if(e.key==="Enter")doAuth();}} style={iS}/>
+          </div>
+        </div>
+        <button onClick={doAuth} disabled={authLoading} style={{width:"100%",padding:13,border:"none",borderRadius:12,background:P.btnGrad,color:"#fff",fontSize:14,fontWeight:700,cursor:"pointer",boxShadow:"0 4px 15px rgba(168,85,247,0.4)",opacity:authLoading?0.7:1}}>
+          {authLoading?"...":(authMode==="login"?"Ingresar":"Crear cuenta")}
+        </button>
+      </div>
+    </div>
+  );
+
+  // ── render helpers ──
+  var labelStyle = {fontSize:10,color:P.textMuted,display:"block",marginBottom:5,fontWeight:600,letterSpacing:"0.07em",textTransform:"uppercase"};
+  var fieldBox = {border:"1px solid "+P.border,borderRadius:10,overflow:"hidden",background:P.bg2};
+
+  return (
+    <div style={{background:P.bg1,minHeight:"100vh",color:P.text}}>
+      <Toast msg={toast&&toast.msg} type={toast&&toast.type}/>
+
+      {/* Modal: editar perfil */}
+      <Modal open={showProfileModal} onClose={function(){setShowProfileModal(false);}} title="Editar perfil">
+        <div style={{marginBottom:14}}>
+          <label style={labelStyle}>Nombre del perfil</label>
+          <div style={fieldBox}>
+            <input type="text" value={editProfileForm.nombre} onChange={function(e){setEditProfileForm(function(f){return Object.assign({},f,{nombre:e.target.value});});}} style={iS}/>
+          </div>
+        </div>
+        <p style={{fontSize:10,color:P.textMuted,margin:"0 0 6px",fontWeight:600,textTransform:"uppercase",letterSpacing:"0.06em"}}>Color</p>
+        <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:14}}>
+          {COLOR_OPTIONS.map(function(col){
+            return <button key={col} onClick={function(){setEditProfileForm(function(f){return Object.assign({},f,{color:col});});}} style={{width:24,height:24,borderRadius:"50%",background:col,border:editProfileForm.color===col?"3px solid #fff":"2px solid transparent",cursor:"pointer"}}/>;
+          })}
+        </div>
+        <div style={{marginTop:16,display:"flex",alignItems:"center",gap:10,padding:"12px 14px",background:P.bg3,borderRadius:12,border:"1px solid "+P.border}}>
+          <ProfileAvatar profile={Object.assign({},editProfileForm,{avatar:"__user__"})} size={38}/>
+          <div>
+            <div style={{fontSize:13,fontWeight:700}}>{editProfileForm.nombre||"Sin nombre"}</div>
+            <div style={{fontSize:11,color:P.textMuted}}>{user&&user.email}</div>
+          </div>
+        </div>
+        <button onClick={saveProfile} style={{marginTop:14,width:"100%",padding:"12px",border:"none",borderRadius:12,cursor:"pointer",fontSize:13,fontWeight:700,background:P.btnGrad,color:"#fff",display:"flex",alignItems:"center",justifyContent:"center",gap:8}}>
+          <Ico icon="__check__" size={15} color="#fff"/>Guardar cambios
+        </button>
+      </Modal>
+
+      {/* Modal: panel de perfiles */}
+      <Modal open={showProfilesPanel} onClose={function(){setShowProfilesPanel(false);}} title="Mis perfiles" width={440}>
+        <p style={{fontSize:12,color:P.textMuted,margin:"0 0 14px"}}>Cada perfil tiene sus propios datos separados.</p>
+        {profiles.map(function(p){
+          var isActive = p.profile_key===activeProfileKey;
+          return (
+            <div key={p.profile_key}
+              style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",background:isActive?P.bg3:P.bg1,border:"1.5px solid "+(isActive?(p.color||P.accent2):P.border),borderRadius:12,marginBottom:8,cursor:"pointer"}}
+              onClick={function(){switchProfile(p.profile_key);}}>
+              <ProfileAvatar profile={p} size={36}/>
+              <div style={{flex:1}}>
+                <div style={{fontSize:13,fontWeight:700,color:P.text}}>{p.nombre}</div>
+                {isActive&&<div style={{fontSize:10,color:p.color||P.accent2,fontWeight:600}}>ACTIVO</div>}
+              </div>
+              {isActive&&<div style={{width:8,height:8,borderRadius:"50%",background:p.color||P.accent2}}/>}
+              {profiles.length>1&&!isActive&&(
+                <IBtn icon="__trash__" color={P.red} small title="Eliminar" onClick={function(e){e.stopPropagation();deleteProfile(p.profile_key);}}/>
+              )}
+            </div>
+          );
+        })}
+        <Divider label="Nuevo perfil"/>
+        {showNewProfile?(
+          <div style={{background:P.bg3,borderRadius:12,padding:14,border:"1px solid "+P.border}}>
+            <div style={{marginBottom:10}}>
+              <label style={labelStyle}>Nombre</label>
+              <div style={fieldBox}><input type="text" placeholder="Ej: Empresa, Pareja..." value={newProfileForm.nombre} onChange={function(e){setNewProfileForm(function(f){return Object.assign({},f,{nombre:e.target.value});});}} style={iS}/></div>
+            </div>
+            <p style={{fontSize:10,color:P.textMuted,margin:"0 0 6px",fontWeight:600,textTransform:"uppercase",letterSpacing:"0.06em"}}>Color</p>
+            <div style={{display:"flex",flexWrap:"wrap",gap:5,marginBottom:10}}>
+              {COLOR_OPTIONS.map(function(col){
+                return <button key={col} onClick={function(){setNewProfileForm(function(f){return Object.assign({},f,{color:col});});}} style={{width:20,height:20,borderRadius:"50%",background:col,border:newProfileForm.color===col?"3px solid #fff":"2px solid transparent",cursor:"pointer"}}/>;
+              })}
+            </div>
+            <div style={{display:"flex",gap:8,marginTop:12}}>
+              <button onClick={createProfile} style={{flex:1,padding:"10px",border:"none",borderRadius:10,cursor:"pointer",fontSize:13,fontWeight:700,background:P.btnGrad,color:"#fff",display:"flex",alignItems:"center",justifyContent:"center",gap:6}}><Ico icon="__check__" size={14} color="#fff"/>Crear</button>
+              <button onClick={function(){setShowNewProfile(false);}} style={{padding:"10px 14px",border:"1px solid "+P.border,borderRadius:10,cursor:"pointer",fontSize:13,background:P.bg3,color:P.textSub}}>Cancelar</button>
+            </div>
+          </div>
+        ):(
+          <button onClick={function(){setShowNewProfile(true);}} style={{width:"100%",padding:"11px",border:"1.5px dashed "+P.border,borderRadius:12,cursor:"pointer",fontSize:13,fontWeight:600,background:"transparent",color:P.textMuted,display:"flex",alignItems:"center",justifyContent:"center",gap:8}}>
+            <Ico icon="__circle_plus__" size={15} color={P.textMuted}/>Agregar perfil
+          </button>
+        )}
+      </Modal>
+
+      <div style={{display:"flex",maxWidth:1200,margin:"0 auto"}}>
+
+        {/* SIDEBAR */}
+        <nav className="app-sidebar" style={{display:"none",width:220,minHeight:"100vh",background:P.bg2,borderRight:"1px solid "+P.border,padding:"16px 12px",position:"sticky",top:0,height:"100vh",flexDirection:"column",flexShrink:0,overflowY:"auto"}}>
+          <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:20,paddingBottom:14,borderBottom:"1px solid "+P.border}}>
+            <FFSLogo size={20} color={P.accent2}/>
+            <div><div style={{fontSize:11,fontWeight:700,color:P.text}}>FFS</div><div style={{fontSize:10,color:P.textMuted}}>{mesLabel}</div></div>
+          </div>
+          {NAV.map(function(t){
+            if(t.highlight) return (
+              <button key={t.id} onClick={function(){navTo(t.id);}} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",border:"none",borderRadius:10,cursor:"pointer",background:P.btnGrad,color:"#fff",fontSize:13,fontWeight:700,width:"100%",marginBottom:4,boxShadow:"0 2px 10px rgba(168,85,247,0.35)"}}>
+                <Ico icon={t.icon} size={16} color="#fff"/>{t.label}
+              </button>
+            );
+            return (
+              <button key={t.id} onClick={function(){navTo(t.id);}} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",border:"none",borderRadius:10,cursor:"pointer",background:view===t.id?t.color+"20":"transparent",color:view===t.id?t.color:P.textMuted,fontSize:13,fontWeight:view===t.id?600:400,width:"100%",marginBottom:4,borderLeft:view===t.id?"3px solid "+t.color:"3px solid transparent"}}>
+                <Ico icon={t.icon} size={16} color={view===t.id?t.color:P.textMuted}/>{t.label}
+              </button>
+            );
+          })}
+          <div style={{marginTop:"auto",paddingTop:12,borderTop:"1px solid "+P.border}}>
+            <button onClick={function(){setShowProfilesPanel(true);}} style={{width:"100%",display:"flex",alignItems:"center",gap:8,padding:"9px 10px",borderRadius:10,border:"1px solid "+P.border,background:P.bg3,cursor:"pointer",marginBottom:8,textAlign:"left"}}>
+              <ProfileAvatar profile={profile} size={28}/>
+              <div style={{flex:1,minWidth:0}}>
+                <div style={{fontSize:12,fontWeight:700,color:P.text,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{profile&&profile.nombre||"Perfil"}</div>
+                <div style={{fontSize:10,color:P.textMuted}}>{profiles.length} perfil{profiles.length!==1?"es":""}</div>
+              </div>
+              <Ico icon="__switch__" size={13} color={P.textMuted}/>
+            </button>
+            <button onClick={openProfileEdit} style={{width:"100%",display:"flex",alignItems:"center",gap:7,padding:"7px 10px",borderRadius:10,border:"1px solid "+P.border,background:"transparent",cursor:"pointer",marginBottom:8,color:P.textSub,fontSize:12}}>
+              <Ico icon="__settings__" size={13} color={P.textMuted}/>Editar perfil
+            </button>
+            <div style={{display:"flex",gap:6,marginBottom:8}}>
+              <select value={monedaCode} onChange={async function(e){
+                var nc=e.target.value; setMonedaCode(nc);
+                var sess=getSess(); if(!sess||!activeProfileKey) return;
+                await supa("/rest/v1/profiles?user_id=eq."+user.id+"&profile_key=eq."+activeProfileKey,{method:"PATCH",body:JSON.stringify({moneda_code:nc,updated_at:new Date().toISOString()})},sess.access_token).catch(function(){});
+              }} style={{flex:1,background:P.bg3,border:"1px solid "+P.border,borderRadius:8,padding:"6px 8px",color:P.text,fontSize:12,outline:"none",cursor:"pointer"}}>
+                {monedas.map(function(m){return <option key={m.code} value={m.code}>{m.code} {m.symbol}</option>;})}
+              </select>
+              <button onClick={function(){setPrivacyMode(function(v){return !v;});}} style={{width:32,height:32,borderRadius:8,border:"1px solid "+P.border,background:privacyMode?"rgba(232,121,249,0.15)":P.bg3,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>
+                <Ico icon={privacyMode?"__eye_off__":"__eye__"} size={14} color={privacyMode?P.pink:P.textMuted}/>
+              </button>
+            </div>
+            <button onClick={doLogout} style={{width:"100%",padding:"8px",border:"1px solid rgba(248,113,113,0.3)",borderRadius:10,background:"rgba(248,113,113,0.08)",color:P.red,fontSize:12,cursor:"pointer",fontWeight:600,display:"flex",alignItems:"center",justifyContent:"center",gap:6}}>
+              <Ico icon="__logout__" size={13} color={P.red}/>Cerrar sesión
+            </button>
+          </div>
+        </nav>
+
+        {/* MAIN */}
+        <div className="app-main" style={{flex:1,padding:12,minWidth:0}}>
+
+          {/* HEADER */}
+          <div style={{background:P.headerGrad,borderRadius:20,padding:"18px 16px",marginBottom:14,position:"relative",overflow:"hidden"}}>
+            <div style={{position:"absolute",top:-60,right:-60,width:200,height:200,borderRadius:"50%",background:"rgba(168,85,247,0.1)"}}/>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12,position:"relative"}}>
+              <div style={{display:"flex",alignItems:"center",gap:8}}>
+                <FFSLogo size={20} color="rgba(255,255,255,0.7)"/>
+                <div>
+                  <div style={{fontSize:11,color:"rgba(255,255,255,0.6)",fontWeight:700,letterSpacing:"0.1em"}}>FLORAFAUNA FINANZAS</div>
+                  <div style={{fontSize:10,color:"rgba(255,255,255,0.3)"}}>{mesLabel}</div>
+                </div>
+              </div>
+              <div style={{display:"flex",gap:6,alignItems:"center"}}>
+                <button onClick={function(){setShowProfilesPanel(true);}} style={{display:"flex",alignItems:"center",gap:6,background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.2)",padding:"5px 9px",borderRadius:20,cursor:"pointer"}}>
+                  <ProfileAvatar profile={profile} size={18}/>
+                  <span style={{fontSize:11,color:"rgba(255,255,255,0.85)",fontWeight:600,maxWidth:80,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{profile&&profile.nombre||"Perfil"}</span>
+                </button>
+
+                <div style={{display:"flex",flexDirection:"column",gap:4,alignItems:"flex-end"}}>
+                  <select value={monedaCode} onChange={async function(e){
+        var nc=e.target.value; setMonedaCode(nc);
+        var sess=getSess(); if(!sess||!activeProfileKey) return;
+        await supa("/rest/v1/profiles?user_id=eq."+user.id+"&profile_key=eq."+activeProfileKey,{method:"PATCH",body:JSON.stringify({moneda_code:nc,updated_at:new Date().toISOString()})},sess.access_token).catch(function(){});
+      }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.2)",color:"rgba(255,255,255,0.85)",fontSize:12,padding:"5px 8px",borderRadius:8,cursor:"pointer",outline:"none",fontWeight:600}}>
+                    {monedas.map(function(m){return <option key={m.code} value={m.code}>{m.code} {m.symbol}</option>;})}
+                  </select>
+                  <button onClick={doLogout} style={{background:"rgba(255,255,255,0.08)",border:"1px solid rgba(255,255,255,0.15)",color:"rgba(255,255,255,0.7)",fontSize:11,padding:"4px 9px",borderRadius:8,cursor:"pointer",display:"flex",alignItems:"center",gap:5,fontWeight:600}}>
+                    <Ico icon="__logout__" size={11} color="rgba(255,255,255,0.7)"/>{user&&user.email&&user.email.split("@")[0]}
+                  </button>
+                </div>
+              </div>
+            </div>
+            <p style={{fontSize:11,color:"rgba(255,255,255,0.38)",margin:"0 0 3px"}}>Balance · {profile&&profile.nombre||""}</p>
+            <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
+              <p style={{fontSize:32,fontWeight:700,color:"#fff",margin:0,letterSpacing:"-0.5px",textShadow:"0 0 30px rgba(232,121,249,0.35)"}}>{fmtP(balance,sym)}</p>
+              <button onClick={function(){setPrivacyMode(function(v){return !v;});}} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.2)",padding:"6px 8px",borderRadius:8,cursor:"pointer",display:"flex",alignItems:"center",flexShrink:0}}>
+                <Ico icon={privacyMode?"__eye_off__":"__eye__"} size={16} color={privacyMode?P.pink:"rgba(255,255,255,0.85)"}/>
+              </button>
+            </div>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
+              <div style={{background:"rgba(52,211,153,0.1)",border:"1px solid rgba(52,211,153,0.25)",borderRadius:12,padding:"11px 14px"}}>
+                <p style={{fontSize:10,color:"rgba(52,211,153,0.6)",margin:"0 0 3px",fontWeight:700,letterSpacing:"0.06em"}}>INGRESOS</p>
+                <p style={{fontSize:17,fontWeight:700,color:P.green,margin:0}}>{fmtP(ingresos,sym)}</p>
+              </div>
+              <div style={{background:"rgba(248,113,113,0.1)",border:"1px solid rgba(248,113,113,0.25)",borderRadius:12,padding:"11px 14px"}}>
+                <p style={{fontSize:10,color:"rgba(248,113,113,0.6)",margin:"0 0 3px",fontWeight:700,letterSpacing:"0.06em"}}>EGRESOS</p>
+                <p style={{fontSize:17,fontWeight:700,color:P.red,margin:0}}>{fmtP(egresos,sym)}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* BOTTOM NAV */}
+          <div className="app-bottomnav" style={{display:"none",background:P.bg2,borderTop:"1px solid "+P.border,padding:"6px 4px"}}>
+            {NAV.filter(function(t){return !t.sidebarOnly;}).map(function(t){
+              var active = view===t.id;
+              if(t.highlight) return (
+                <button key={t.id} onClick={function(){navTo(t.id);}} style={{flex:1.2,padding:"9px 2px",borderRadius:11,cursor:"pointer",border:"none",background:active?"linear-gradient(135deg,#9d174d,#e91e8c,#f472b6)":P.btnGrad,color:"#fff",fontSize:9,fontWeight:700,letterSpacing:"0.05em",display:"flex",flexDirection:"column",alignItems:"center",gap:3,boxShadow:"0 2px 10px rgba(168,85,247,0.4)"}}>
+                  <Ico icon={t.icon} size={17} color="#fff"/>{t.label.toUpperCase()}
+                </button>
+              );
+              return (
+                <button key={t.id} onClick={function(){navTo(t.id);}} style={{flex:1,padding:"7px 2px",border:"2px solid "+(active?t.color:P.border),borderRadius:11,cursor:"pointer",background:active?t.color+"18":P.bg2,color:active?t.color:P.textMuted,fontSize:9,fontWeight:active?700:500,letterSpacing:"0.04em",display:"flex",flexDirection:"column",alignItems:"center",gap:3}}>
+                  <Ico icon={t.icon} size={16} color={active?t.color:P.textMuted}/>{t.label.toUpperCase()}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* ════ DASHBOARD ════ */}
+          {view==="dashboard"&&(
+            <div>
+              {pieData.length>0&&cats.length>0?(
+                <div style={card}>
+                  <p style={{fontSize:13,fontWeight:600,margin:"0 0 14px"}}>Egresos por categoría — {MESES[now.getMonth()]}</p>
+                  <PieDonut data={pieData} sym={sym} priv={privacyMode}/>
+                </div>
+              ):(
+                <div style={Object.assign({},card,{textAlign:"center",padding:"2rem"})}>
+                  <Ico icon="__chart_bar__" size={36} color={P.textMuted}/>
+                  <p style={{fontSize:13,color:P.textMuted,margin:"8px 0 4px"}}>Sin egresos este mes</p>
+                  <p style={{fontSize:11,color:P.textMuted}}>Agregá tu primer movimiento</p>
+                </div>
+              )}
+              {barData.length>0&&(
+                <div style={card}>
+                  <p style={{fontSize:13,fontWeight:600,margin:"0 0 14px"}}>Evolución mensual</p>
+                  <div style={{display:"flex",gap:14,marginBottom:12,fontSize:11,color:P.textSub}}>
+                    <span style={{display:"flex",alignItems:"center",gap:4}}><span style={{width:8,height:8,borderRadius:2,background:P.green,display:"inline-block"}}/> Ingresos</span>
+                    <span style={{display:"flex",alignItems:"center",gap:4}}><span style={{width:8,height:8,borderRadius:2,background:P.red,display:"inline-block"}}/> Egresos</span>
+                  </div>
+                  {barData.map(function(entry){
+                    var k=entry[0], v=entry[1];
+                    var parts=k.split("-");
+                    var y=parts[0], mo=parts[1];
+                    var maxVal=Math.max.apply(null,barData.map(function(e){return Math.max(e[1].ing,e[1].eg);}));
+                    maxVal=maxVal||1;
+                    return (
+                      <div key={k} style={{marginBottom:12}}>
+                        <p style={{fontSize:11,color:P.textMuted,margin:"0 0 5px",fontWeight:600}}>{MESES[+mo-1].slice(0,3).toUpperCase()} {y}</p>
+                        <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4}}>
+                          <div style={{flex:1,height:8,background:P.bg3,borderRadius:4,overflow:"hidden"}}>
+                            <div style={{height:"100%",background:P.green,borderRadius:4,width:Math.round(v.ing/maxVal*100)+"%"}}/>
+                          </div>
+                          <span style={{fontSize:11,color:P.textSub,minWidth:90,textAlign:"right"}}>{fmtP(v.ing,sym)}</span>
+                        </div>
+                        <div style={{display:"flex",alignItems:"center",gap:8}}>
+                          <div style={{flex:1,height:8,background:P.bg3,borderRadius:4,overflow:"hidden"}}>
+                            <div style={{height:"100%",background:P.red,borderRadius:4,width:Math.round(v.eg/maxVal*100)+"%"}}/>
+                          </div>
+                          <span style={{fontSize:11,color:P.textSub,minWidth:90,textAlign:"right"}}>{fmtP(v.eg,sym)}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+              <div style={card}>
+                <p style={{fontSize:13,fontWeight:600,margin:"0 0 14px"}}>Últimos movimientos</p>
+                {movs.length===0?(
+                  <div style={{textAlign:"center",padding:"1.5rem 0"}}>
+                    <Ico icon="__history__" size={32} color={P.textMuted}/>
+                    <p style={{fontSize:13,color:P.textMuted,margin:"8px 0 0"}}>Sin movimientos aún</p>
+                  </div>
+                ):(
+                  <div>
+                    {movs.slice(0,6).map(function(m){
+                      var cat=getCat(m.cat_id);
+                      var ing=m.tipo==="ingreso";
+                      var sub=cat&&cat.subs?cat.subs.find(function(s){return s.id===m.sub_id;}):null;
+                      var msym=getMonSym(m.moneda);
+                      return (
+                        <div key={m.id} style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
+                          <CatAvatar cat={cat} size={36}/>
+                          <div style={{flex:1,minWidth:0}}>
+                            <p style={{margin:0,fontSize:13,fontWeight:600,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>
+                              {cat?cat.nombre:"—"}
+                              {sub?<span style={{fontWeight:400,color:P.textSub}}> / {sub.nombre}</span>:null}
+                            </p>
+                            <p style={{margin:0,fontSize:11,color:P.textSub}}>{m.descripcion||m.cuenta} · {m.fecha}</p>
+                          </div>
+                          <p style={{margin:0,fontWeight:700,fontSize:14,color:ing?P.green:P.red}}>{ing?"+":"-"}{fmtP(Number(m.monto),msym)}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+              <SectionFooter/>
+            </div>
+          )}
+
+          {/* ════ AGREGAR / EDITAR ════ */}
+          {view==="nuevo"&&(
+            <div style={card}>
+              <p style={{fontSize:15,fontWeight:700,margin:"0 0 16px"}}>{editMovId?"Editar movimiento":"Agregar movimiento"}</p>
+              <div style={{display:"flex",gap:6,marginBottom:18,background:P.bg3,borderRadius:10,padding:4}}>
+                {["egreso","ingreso"].map(function(t){
+                  var sel=form.tipo===t, isIng=t==="ingreso";
+                  return (
+                    <button key={t} onClick={function(){setForm(function(f){return Object.assign({},f,{tipo:t});});}}
+                      style={{flex:1,padding:"10px",border:"none",borderRadius:9,cursor:"pointer",fontWeight:700,fontSize:13,
+                        background:sel?(isIng?"#166834":"#7f1d1d"):(isIng?"rgba(52,211,153,0.06)":"rgba(248,113,113,0.06)"),
+                        color:sel?"#fff":(isIng?"rgba(52,211,153,0.45)":"rgba(248,113,113,0.45)")}}>
+                      {isIng?"↑ Ingreso":"↓ Egreso"}
+                    </button>
+                  );
+                })}
+              </div>
+              <div style={{background:P.bg3,borderRadius:12,padding:14,marginBottom:14}}>
+                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:12}}>
+                  <div>
+                    <label style={labelStyle}>Fecha</label>
+                    <div style={fieldBox}><input type="date" value={form.fecha} onChange={function(e){setForm(function(f){return Object.assign({},f,{fecha:e.target.value});});}} style={iS}/></div>
+                  </div>
+                  <div>
+                    <label style={labelStyle}>Cuenta</label>
+                    <div style={fieldBox}>
+                      <select value={form.cuenta} onChange={function(e){setForm(function(f){return Object.assign({},f,{cuenta:e.target.value});});}} style={sS}>
+                        {CUENTAS.map(function(c){return <option key={c}>{c}</option>;})}
+                      </select>
+                    </div>
+                  </div>
+                  <div style={{gridColumn:"1/-1"}}>
+                    <label style={labelStyle}>Moneda</label>
+                    <div style={fieldBox}>
+                      <select value={form.moneda} onChange={function(e){setForm(function(f){return Object.assign({},f,{moneda:e.target.value});});}} style={sS}>
+                        {monedas.map(function(m){return <option key={m.code} value={m.code}>{m.code} {m.symbol} — {m.label}</option>;})}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <label style={labelStyle}>Categoría</label>
+                <div style={{display:"flex",flexWrap:"wrap",gap:7,marginBottom:form.catId?10:0}}>
+                  {cats.map(function(c){
+                    var sel=form.catId===String(c.id);
+                    return (
+                      <button key={c.id} onClick={function(){setForm(function(f){return Object.assign({},f,{catId:sel?"":String(c.id),subId:""});});}}
+                        style={{display:"flex",alignItems:"center",gap:6,padding:"7px 13px",borderRadius:20,border:"1.5px solid "+(sel?c.color:P.border),background:sel?c.color+"20":P.bg2,color:sel?c.color:P.textSub,fontSize:12,cursor:"pointer",fontWeight:sel?700:400}}>
+                        <Ico icon={c.icon} size={13} color={sel?c.color:P.textSub}/>{c.nombre}
+                      </button>
+                    );
+                  })}
+                  {cats.length===0&&<p style={{fontSize:12,color:P.textMuted}}>Creá una categoría primero</p>}
+                </div>
+                {form.catId&&(function(){
+                  var cat=getCat(+form.catId);
+                  if(!cat)return null;
+                  var hasSubs=cat.subs&&cat.subs.length>0;
+                  return (
+                    <div style={{background:cat.color+"10",border:"1.5px solid "+cat.color+"30",borderRadius:12,padding:"12px 14px"}}>
+                      <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:hasSubs?10:0}}>
+                        <CatAvatar cat={cat} size={22}/>
+                        <span style={{fontSize:12,fontWeight:700,color:cat.color}}>{cat.nombre}</span>
+                        {hasSubs&&<span style={{fontSize:11,color:P.textMuted}}>— elegí una subcategoría</span>}
+                      </div>
+                      {hasSubs&&(
+                        <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
+                          {cat.subs.map(function(sub){
+                            var selSub=form.subId===String(sub.id);
+                            return (
+                              <button key={sub.id} onClick={function(){setForm(function(f){return Object.assign({},f,{subId:selSub?"":String(sub.id)});});}}
+                                style={{display:"flex",alignItems:"center",gap:5,padding:"6px 12px",borderRadius:16,border:"1.5px solid "+(selSub?cat.color:P.border),background:selSub?cat.color+"25":P.bg2,color:selSub?cat.color:P.textSub,fontSize:12,cursor:"pointer",fontWeight:selSub?700:400}}>
+                                {selSub&&<Ico icon="__check__" size={11} color={cat.color}/>}{sub.nombre}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+              </div>
+              <div style={{marginBottom:14,background:"rgba(124,58,237,0.15)",border:"1px solid rgba(124,58,237,0.35)",borderRadius:12,padding:16}}>
+                <label style={{fontSize:10,color:P.accent3,display:"block",marginBottom:7,fontWeight:700,letterSpacing:"0.07em",textTransform:"uppercase"}}>Monto</label>
+                <div style={{display:"flex",alignItems:"baseline",gap:6,borderBottom:"2px solid rgba(124,58,237,0.55)",paddingBottom:6}}>
+                  <span style={{fontSize:20,color:P.accent3,fontWeight:700}}>{getMonSym(form.moneda)}</span>
+                  <input type="number" min="0" step="0.01" placeholder="0,00" value={form.monto}
+                    onChange={function(e){setForm(function(f){return Object.assign({},f,{monto:e.target.value});});}}
+                    style={{flex:1,fontSize:30,fontWeight:700,border:"none",background:"transparent",outline:"none",color:P.accent3}}/>
+                </div>
+              </div>
+              <div style={{marginBottom:20,background:P.bg3,borderRadius:12,padding:14}}>
+                <label style={labelStyle}>Descripción</label>
+                <div style={fieldBox}><input type="text" placeholder="Detalle opcional..." value={form.desc} onChange={function(e){setForm(function(f){return Object.assign({},f,{desc:e.target.value});});}} style={iS}/></div>
+              </div>
+              <div style={{display:"flex",gap:8}}>
+                <button onClick={submitMov} style={{flex:1,padding:"12px",border:"none",borderRadius:12,cursor:"pointer",fontSize:13,fontWeight:700,background:P.btnGrad,color:"#fff",display:"flex",alignItems:"center",justifyContent:"center",gap:8,boxShadow:"0 4px 15px rgba(168,85,247,0.4)"}}>
+                  <Ico icon="__check__" size={15} color="#fff"/>{editMovId?"Actualizar":"Guardar movimiento"}
+                </button>
+                {editMovId&&(
+                  <button onClick={function(){setEditMovId(null);setForm({fecha:today(),tipo:"egreso",cuenta:"Hogar",catId:"",subId:"",monto:"",desc:"",moneda:monedaCode});setView("lista");}}
+                    style={{padding:"13px 16px",borderRadius:12,background:P.bg3,border:"1px solid "+P.border,color:P.textSub,cursor:"pointer"}}>
+                    Cancelar
+                  </button>
+                )}
+              </div>
+              <SectionFooter/>
+            </div>
+          )}
+
+          {/* ════ MOVIMIENTOS ════ */}
+          {view==="lista"&&(
+            <div>
+              <div style={card}>
+                <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",paddingBottom:12,borderBottom:"0.5px solid "+P.border,marginBottom:14}}>
+                  <span style={{fontSize:12,fontWeight:700,color:P.textSub,display:"flex",alignItems:"center",gap:6}}><Ico icon="__adjustments__" size={14} color={P.textSub}/>FILTROS</span>
+                  {(filtros.mes||filtros.cuenta||filtros.tipo||filtros.catId)&&(
+                    <button onClick={function(){setFiltros({cuenta:"",tipo:"",catId:"",mes:""},);}} style={{display:"flex",alignItems:"center",gap:4,fontSize:11,padding:"4px 10px",borderRadius:20,border:"1px solid rgba(248,113,113,0.4)",background:"rgba(248,113,113,0.08)",color:P.red,cursor:"pointer",fontWeight:600}}>
+                      <Ico icon="__x__" size={11} color={P.red}/>Limpiar
+                    </button>
+                  )}
+                </div>
+                <div style={{marginBottom:14}}>
+                  <p style={{fontSize:10,color:P.textMuted,margin:"0 0 8px",fontWeight:600,letterSpacing:"0.07em",textTransform:"uppercase"}}>Tipo</p>
+                  <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+                    {[{v:"",l:"Todos"},{v:"ingreso",l:"↑ Ingresos",c:P.green},{v:"egreso",l:"↓ Egresos",c:P.red}].map(function(o){
+                      return <button key={o.v} onClick={function(){setFiltros(function(x){return Object.assign({},x,{tipo:o.v});});}} style={{padding:"6px 14px",borderRadius:20,cursor:"pointer",fontSize:12,fontWeight:filtros.tipo===o.v?700:400,border:"1.5px solid "+(filtros.tipo===o.v?(o.c||P.accent2):P.border),background:filtros.tipo===o.v?(o.c||P.accent2)+"15":P.bg3,color:filtros.tipo===o.v?(o.c||P.accent2):P.textSub}}>{o.l}</button>;
+                    })}
+                  </div>
+                </div>
+                <div style={{marginBottom:14}}>
+                  <p style={{fontSize:10,color:P.textMuted,margin:"0 0 8px",fontWeight:600,letterSpacing:"0.07em",textTransform:"uppercase"}}>Cuenta</p>
+                  <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+                    {[{v:"",l:"Todas"},{v:"Hogar",l:"Hogar"},{v:"Trabajo",l:"Trabajo"},{v:"Personal",l:"Personal"}].map(function(o){
+                      return <button key={o.v} onClick={function(){setFiltros(function(x){return Object.assign({},x,{cuenta:o.v});});}} style={{padding:"6px 14px",borderRadius:20,cursor:"pointer",fontSize:12,fontWeight:filtros.cuenta===o.v?700:400,border:"1.5px solid "+(filtros.cuenta===o.v?P.accent2:P.border),background:filtros.cuenta===o.v?P.accent2+"15":P.bg3,color:filtros.cuenta===o.v?P.accent2:P.textSub}}>{o.l}</button>;
+                    })}
+                  </div>
+                </div>
+                <div style={{marginBottom:14}}>
+                  <p style={{fontSize:10,color:P.textMuted,margin:"0 0 8px",fontWeight:600,letterSpacing:"0.07em",textTransform:"uppercase"}}>Categoría</p>
+                  <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+                    <button onClick={function(){setFiltros(function(x){return Object.assign({},x,{catId:""});});}} style={{padding:"6px 14px",borderRadius:20,cursor:"pointer",fontSize:12,fontWeight:!filtros.catId?700:400,border:"1.5px solid "+(filtros.catId===""?P.accent3:P.border),background:filtros.catId===""?P.accent3+"18":P.bg3,color:filtros.catId===""?P.accent3:P.textSub}}>Todas</button>
+                    {cats.map(function(c){
+                      var sel=filtros.catId===String(c.id);
+                      return <button key={c.id} onClick={function(){setFiltros(function(x){return Object.assign({},x,{catId:String(c.id)});});}} style={{display:"flex",alignItems:"center",gap:5,padding:"6px 12px",borderRadius:20,cursor:"pointer",fontSize:12,fontWeight:sel?700:400,border:"1.5px solid "+(sel?c.color:P.border),background:sel?c.color+"18":P.bg3,color:sel?c.color:P.textSub}}><Ico icon={c.icon} size={12} color={sel?c.color:P.textSub}/>{c.nombre}</button>;
+                    })}
+                  </div>
+                </div>
+                <div>
+                  <p style={{fontSize:10,color:P.textMuted,margin:"0 0 8px",fontWeight:600,letterSpacing:"0.07em",textTransform:"uppercase"}}>Período</p>
+                  <div style={{border:"1px solid "+P.border,borderRadius:10,overflow:"hidden",background:P.bg3,display:"inline-flex",alignItems:"center"}}>
+                    <input type="month" value={filtros.mes} onChange={function(e){setFiltros(function(x){return Object.assign({},x,{mes:e.target.value});});}} style={{border:"none",background:"transparent",padding:"9px 12px",fontSize:13,outline:"none",color:P.text,cursor:"pointer"}}/>
+                    {filtros.mes&&<button onClick={function(){setFiltros(function(x){return Object.assign({},x,{mes:""});});}} style={{background:"none",border:"none",cursor:"pointer",padding:"0 10px",color:P.textMuted}}><Ico icon="__x__" size={12} color={P.textMuted}/></button>}
+                  </div>
+                </div>
+              </div>
+              <p style={{fontSize:12,color:P.textMuted,marginBottom:10,paddingLeft:2}}>{filteredMovs.length} movimiento{filteredMovs.length!==1?"s":""}</p>
+              {filteredMovs.map(function(m){
+                var cat=getCat(m.cat_id);
+                var ing=m.tipo==="ingreso";
+                var msym=getMonSym(m.moneda);
+                var sub=cat&&cat.subs?cat.subs.find(function(s){return s.id===m.sub_id;}):null;
+                return (
+                  <div key={m.id} style={{background:P.bg2,border:"1px solid "+(ing?"rgba(52,211,153,0.2)":"rgba(248,113,113,0.18)"),borderLeft:"4px solid "+(ing?P.green:P.red),borderRadius:14,padding:"12px 14px",display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
+                    <CatAvatar cat={cat} size={38}/>
+                    <div style={{flex:1,minWidth:0}}>
+                      <div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap",marginBottom:2}}>
+                        <span style={{fontWeight:700,fontSize:14}}>{cat?cat.nombre:"—"}{sub?<span style={{fontWeight:400,color:P.textSub}}> / {sub.nombre}</span>:null}</span>
+                        <span style={{fontSize:10,padding:"2px 8px",borderRadius:20,background:P.bg3,color:P.textSub}}>{m.cuenta}</span>
+                        <span style={{fontSize:10,padding:"2px 8px",borderRadius:20,background:ing?"rgba(52,211,153,0.1)":"rgba(248,113,113,0.1)",color:ing?P.green:P.red}}>{ing?"↑ Ingreso":"↓ Egreso"}</span>
+                      </div>
+                      {m.descripcion&&<p style={{fontSize:12,color:P.textSub,margin:"1px 0 2px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{m.descripcion}</p>}
+                      <p style={{fontSize:11,color:P.textMuted,margin:0}}>{m.fecha} · {m.moneda||"ARS"}</p>
+                    </div>
+                    <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:6}}>
+                      <span style={{fontWeight:700,fontSize:15,color:ing?P.green:P.red}}>{ing?"+":"-"}{fmtP(Number(m.monto),msym)}</span>
+                      <div style={{display:"flex",gap:5}}>
+                        <IBtn icon="__edit__" color={P.accent3} title="Editar" small onClick={function(){
+                          setEditMovId(m.id);
+                          setForm({fecha:m.fecha,tipo:m.tipo,cuenta:m.cuenta,catId:String(m.cat_id||""),subId:String(m.sub_id||""),monto:String(m.monto),desc:m.descripcion||"",moneda:m.moneda||monedaCode});
+                          setView("nuevo");
+                        }}/>
+                        <IBtn icon="__trash__" color={P.red} title="Eliminar" small onClick={function(){deleteMov(m.id);}}/>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+              {filteredMovs.length===0&&(
+                <div style={{textAlign:"center",padding:"3rem",color:P.textMuted,fontSize:13}}>
+                  <Ico icon="__eye_off__" size={32} color={P.textMuted}/>
+                  <p style={{margin:"10px 0 0"}}>Sin resultados</p>
+                </div>
+              )}
+              <SectionFooter/>
+            </div>
+          )}
+
+          {/* ════ CATEGORIAS ════ */}
+          {view==="categorias"&&(
+            <div>
+              <div style={card}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
+                  <p style={{fontSize:13,fontWeight:700,margin:0}}>Mis categorías</p>
+                  <button onClick={function(){setShowNewCat(!showNewCat);}} style={{display:"flex",alignItems:"center",gap:5,padding:"7px 14px",borderRadius:20,border:"1.5px solid "+P.pink,background:P.pink+"15",color:P.pink,fontSize:12,cursor:"pointer",fontWeight:700}}>
+                    <Ico icon="__circle_plus__" size={13} color={P.pink}/>Nueva
+                  </button>
+                </div>
+                {showNewCat&&(
+                  <div style={{background:P.bg3,borderRadius:12,padding:14,marginBottom:14,border:"1px solid "+P.border}}>
+                    <div style={{marginBottom:10}}>
+                      <label style={labelStyle}>Nombre</label>
+                      <div style={fieldBox}><input type="text" placeholder="Nombre..." value={newCat.nombre} onChange={function(e){setNewCat(function(n){return Object.assign({},n,{nombre:e.target.value});});}} style={iS}/></div>
+                    </div>
+                    <p style={{fontSize:10,color:P.textMuted,margin:"0 0 6px",fontWeight:600,textTransform:"uppercase",letterSpacing:"0.06em"}}>Color</p>
+                    <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:12}}>
+                      {COLOR_OPTIONS.map(function(col){return <button key={col} onClick={function(){setNewCat(function(n){return Object.assign({},n,{color:col});});}} style={{width:22,height:22,borderRadius:"50%",background:col,border:newCat.color===col?"3px solid #fff":"2px solid transparent",cursor:"pointer"}}/>;} )}
+                    </div>
+                    <p style={{fontSize:10,color:P.textMuted,margin:"0 0 6px",fontWeight:600,textTransform:"uppercase",letterSpacing:"0.06em"}}>Ícono</p>
+                    <IconPicker value={newCat.icon} onChange={function(ic){setNewCat(function(n){return Object.assign({},n,{icon:ic});});}} color={newCat.color}/>
+                    <div style={{display:"flex",gap:8,marginTop:14}}>
+                      <button onClick={addCat} style={{flex:1,padding:"12px",border:"none",borderRadius:12,cursor:"pointer",fontSize:13,fontWeight:700,background:P.btnGrad,color:"#fff",display:"flex",alignItems:"center",justifyContent:"center",gap:8}}>
+                        <Ico icon="__check__" size={15} color="#fff"/>Agregar
+                      </button>
+                      <button onClick={function(){setShowNewCat(false);}} style={{width:42,height:42,borderRadius:10,background:"rgba(248,113,113,0.12)",border:"1px solid rgba(248,113,113,0.35)",color:P.red,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>
+                        <Ico icon="__x__" size={16} color={P.red}/>
+                      </button>
+                    </div>
+                  </div>
+                )}
+                {cats.length===0&&!showNewCat&&(
+                  <div style={{textAlign:"center",padding:"2rem 0"}}>
+                    <Ico icon="__settings__" size={32} color={P.textMuted}/>
+                    <p style={{fontSize:13,color:P.textMuted,margin:"8px 0 4px"}}>Sin categorías aún</p>
+                  </div>
+                )}
+                <p style={{fontSize:11,color:P.textMuted,margin:"0 0 10px"}}>Arrastrá para reordenar · tocá para expandir</p>
+                {cats.map(function(c,ci){
+                  return (
+                    <div key={c.id} draggable
+                      onDragStart={function(){catDragSrc.current=ci;}}
+                      onDragOver={function(e){
+                        e.preventDefault();
+                        if(catDragSrc.current===ci)return;
+                        setCats(function(p){var s=p.slice(),item=s.splice(catDragSrc.current,1)[0];s.splice(ci,0,item);catDragSrc.current=ci;return s;});
+                      }}
+                      onDragEnd={onCatDragEnd}
+                      style={{border:"1.5px solid "+(expandedCatId===c.id?c.color:P.border),borderRadius:12,overflow:"hidden",marginBottom:8}}>
+                      <div style={{display:"flex",alignItems:"center",gap:8,padding:"10px 12px",background:P.bg3,cursor:"pointer"}}
+                        onClick={function(){setExpandedCatId(expandedCatId===c.id?null:c.id);}}>
+                        <Ico icon="__grip__" size={16} color={P.textMuted}/>
+                        {editingCat&&editingCat.id===c.id?(
+                          <div style={{flex:1,display:"flex",alignItems:"center",gap:8}} onClick={function(e){e.stopPropagation();}}>
+                            <CatAvatar cat={editingCat} size={32}/>
+                            <input value={editingCat.nombre} onChange={function(e){setEditingCat(function(x){return Object.assign({},x,{nombre:e.target.value});});}} style={{flex:1,fontSize:13,border:"1.5px solid "+P.border,borderRadius:8,padding:"6px 10px",background:P.bg2,color:P.text,outline:"none"}}/>
+                          </div>
+                        ):(
+                          <React.Fragment>
+                            <CatAvatar cat={c} size={32}/>
+                            <span style={{flex:1,fontSize:14,fontWeight:700}}>{c.nombre}</span>
+                            <span style={{fontSize:11,color:P.textMuted}}>{c.subs.length} sub</span>
+                            <span style={{fontSize:13,color:P.textMuted}}>{expandedCatId===c.id?"▲":"▼"}</span>
+                          </React.Fragment>
+                        )}
+                        <div style={{display:"flex",gap:4}} onClick={function(e){e.stopPropagation();}}>
+                          {editingCat&&editingCat.id===c.id?(
+                            <IBtn icon="__square_check__" color={P.green} small title="Guardar" onClick={function(){updateCat(c.id,{nombre:editingCat.nombre,icon:editingCat.icon,color:editingCat.color});}}/>
+                          ):(
+                            <IBtn icon="__edit__" color={P.accent3} small title="Editar" onClick={function(){setEditingCat(Object.assign({},c));setExpandedCatId(c.id);}}/>
+                          )}
+                          <IBtn icon="__trash__" color={P.red} small title="Eliminar" onClick={function(){deleteCat(c.id);}}/>
+                        </div>
+                      </div>
+                      {editingCat&&editingCat.id===c.id&&(
+                        <div style={{padding:12,background:P.bg2,borderTop:"0.5px solid "+P.border}} onClick={function(e){e.stopPropagation();}}>
+                          <p style={{fontSize:10,color:P.textMuted,margin:"0 0 6px",fontWeight:600,textTransform:"uppercase",letterSpacing:"0.06em"}}>Color</p>
+                          <div style={{display:"flex",flexWrap:"wrap",gap:5,marginBottom:12}}>
+                            {COLOR_OPTIONS.map(function(col){return <button key={col} onClick={function(){setEditingCat(function(x){return Object.assign({},x,{color:col});});}} style={{width:22,height:22,borderRadius:"50%",background:col,border:editingCat.color===col?"3px solid #fff":"2px solid transparent",cursor:"pointer"}}/>;} )}
+                          </div>
+                          <p style={{fontSize:10,color:P.textMuted,margin:"0 0 6px",fontWeight:600,textTransform:"uppercase",letterSpacing:"0.06em"}}>Ícono</p>
+                          <IconPicker value={editingCat.icon} onChange={function(ic){setEditingCat(function(x){return Object.assign({},x,{icon:ic});});}} color={editingCat.color}/>
+                          <button onClick={function(){updateCat(c.id,{nombre:editingCat.nombre,icon:editingCat.icon,color:editingCat.color});}} style={{marginTop:12,padding:"9px 16px",border:"none",borderRadius:10,cursor:"pointer",fontSize:13,fontWeight:700,background:P.btnGrad,color:"#fff",display:"flex",alignItems:"center",gap:6}}>
+                            <Ico icon="__check__" size={14} color="#fff"/>Guardar cambios
+                          </button>
+                        </div>
+                      )}
+                      {expandedCatId===c.id&&(
+                        <div style={{padding:"10px 12px",background:P.bg2,borderTop:"0.5px solid "+P.border}}>
+                          {c.subs.length===0&&<p style={{fontSize:12,color:P.textMuted,margin:"0 0 10px"}}>Sin subcategorías aún</p>}
+                          {c.subs.map(function(sub,si){
+                            return (
+                              <div key={sub.id} draggable
+                                onDragStart={function(){subDragSrc.current={catId:c.id,i:si};}}
+                                onDragOver={function(e){
+                                  e.preventDefault();
+                                  var src=subDragSrc.current;
+                                  if(!src||src.catId!==c.id||src.i===si)return;
+                                  setCats(function(p){return p.map(function(cat){
+                                    if(cat.id!==c.id)return cat;
+                                    var s=cat.subs.slice(),item=s.splice(src.i,1)[0];
+                                    s.splice(si,0,item);
+                                    subDragSrc.current={catId:c.id,i:si};
+                                    return Object.assign({},cat,{subs:s});
+                                  });});
+                                }}
+                                style={{display:"flex",alignItems:"flex-start",gap:7,padding:"8px 10px",background:P.bg3,borderRadius:9,border:"0.5px solid "+P.border,marginBottom:6,cursor:"grab"}}>
+                                <Ico icon="__grip__" size={14} color={P.textMuted}/>
+                                {editingSub&&editingSub.id===sub.id?(
+                                  <div style={{flex:1,display:"flex",flexDirection:"column",gap:5}}>
+                                    <input value={editingSub.nombre} onChange={function(e){setEditingSub(function(x){return Object.assign({},x,{nombre:e.target.value});});}} style={{fontSize:12,border:"1.5px solid "+P.border,borderRadius:7,padding:"6px 9px",background:P.bg2,color:P.text,outline:"none",width:"100%",boxSizing:"border-box"}}/>
+                                    <input value={editingSub.obs||""} onChange={function(e){setEditingSub(function(x){return Object.assign({},x,{obs:e.target.value});});}} placeholder="Observaciones..." style={{fontSize:11,border:"1px solid "+P.border,borderRadius:7,padding:"5px 9px",background:P.bg2,color:P.textSub,outline:"none",width:"100%",boxSizing:"border-box"}}/>
+                                    <div style={{display:"flex",gap:6}}>
+                                      <button onClick={function(){updateSub(editingSub);}} style={{padding:"6px 12px",border:"none",borderRadius:8,cursor:"pointer",fontSize:12,fontWeight:700,background:P.btnGrad,color:"#fff",display:"flex",alignItems:"center",gap:5}}><Ico icon="__check__" size={12} color="#fff"/>Guardar</button>
+                                      <button onClick={function(){setEditingSub(null);}} style={{padding:"6px 10px",border:"1px solid "+P.border,borderRadius:8,cursor:"pointer",fontSize:12,background:P.bg3,color:P.textSub}}>Cancelar</button>
+                                    </div>
+                                  </div>
+                                ):(
+                                  <div style={{flex:1,minWidth:0}}>
+                                    <span style={{fontSize:13,fontWeight:600}}>{sub.nombre}</span>
+                                    {sub.obs&&<p style={{fontSize:11,color:P.textMuted,margin:"2px 0 0"}}>{sub.obs}</p>}
+                                  </div>
+                                )}
+                                {(!editingSub||editingSub.id!==sub.id)&&(
+                                  <div style={{display:"flex",gap:4,flexShrink:0}}>
+                                    <IBtn icon="__edit__" color={P.accent3} small title="Editar" onClick={function(){setEditingSub(Object.assign({},sub));}}/>
+                                    <IBtn icon="__trash__" color={P.red} small title="Eliminar" onClick={function(){deleteSub(c.id,sub.id);}}/>
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          })}
+                          <div style={{display:"flex",gap:6}}>
+                            <div style={{flex:1,border:"1.5px solid "+P.border,borderRadius:9,overflow:"hidden",background:P.bg3}}>
+                              <input type="text" placeholder={"Nueva en "+c.nombre+"..."} value={newSubNombre[c.id]||""}
+                                onChange={function(e){var v=e.target.value;setNewSubNombre(function(n){return Object.assign({},n,{[c.id]:v});});}}
+                                onKeyDown={function(e){if(e.key==="Enter")addSub(c.id);}}
+                                style={{width:"100%",boxSizing:"border-box",border:"none",background:"transparent",padding:"8px 10px",fontSize:12,outline:"none",color:P.text}}/>
+                            </div>
+                            <button onClick={function(){addSub(c.id);}} style={{padding:"0 14px",background:c.color+"20",border:"1.5px solid "+c.color,color:c.color,borderRadius:9,cursor:"pointer",fontWeight:700,fontSize:14}}>+</button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+              <SectionFooter/>
+            </div>
+          )}
+
+          {/* ════ SERVICIOS ════ */}
+          {view==="servicios"&&(
+            <div>
+              <div style={card}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                  <div>
+                    <p style={{fontSize:13,fontWeight:700,margin:"0 0 2px"}}>Servicios</p>
+                    <p style={{fontSize:11,color:P.textMuted,margin:0}}>Tocá el estado para rotar</p>
+                  </div>
+                  <button onClick={function(){setShowNewSrv(!showNewSrv);}} style={{display:"flex",alignItems:"center",gap:5,padding:"7px 14px",borderRadius:20,border:"1.5px solid "+P.pink,background:P.pink+"15",color:P.pink,fontSize:12,cursor:"pointer",fontWeight:700}}>
+                    <Ico icon="__circle_plus__" size={13} color={P.pink}/>Agregar
+                  </button>
+                </div>
+                <Divider/>
+                {showNewSrv&&(
+                  <div style={{background:P.bg3,borderRadius:12,padding:16,border:"1px solid "+P.border,marginBottom:14}}>
+                    <div style={{marginBottom:12}}>
+                      <label style={labelStyle}>Nombre</label>
+                      <div style={fieldBox}><input type="text" placeholder="Ej: Netflix..." value={newSrv.nombre} onChange={function(e){setNewSrv(function(n){return Object.assign({},n,{nombre:e.target.value});});}} style={iS}/></div>
+                    </div>
+                    <p style={{fontSize:10,color:P.textMuted,margin:"0 0 6px",fontWeight:600,textTransform:"uppercase",letterSpacing:"0.06em"}}>Ícono</p>
+                    <div style={{background:P.bg2,borderRadius:9,padding:10,border:"1px solid "+P.border,marginBottom:12}}>
+                      <IconPicker value={newSrv.icon} onChange={function(ic){setNewSrv(function(n){return Object.assign({},n,{icon:ic});});}} color="#f472b6"/>
+                    </div>
+                    <div style={{marginBottom:12}}>
+                      <label style={labelStyle}>Tipo de monto</label>
+                      <div style={{display:"flex",gap:6,marginBottom:8}}>
+                        {[[false,P.green,"Fijo"],[true,P.amber,"Variable"]].map(function(item){
+                          var isVar=item[0], col=item[1], lbl=item[2];
+                          return <button key={lbl} onClick={function(){setNewSrv(function(n){return Object.assign({},n,{montoVariable:isVar,monto:""});});}} style={{flex:1,padding:"8px",borderRadius:10,border:"1.5px solid "+(newSrv.montoVariable===isVar?col:P.border),background:newSrv.montoVariable===isVar?col+"18":P.bg2,color:newSrv.montoVariable===isVar?col:P.textSub,fontSize:12,cursor:"pointer",fontWeight:newSrv.montoVariable===isVar?700:400}}>{lbl}</button>;
+                        })}
+                      </div>
+                      {!newSrv.montoVariable&&(
+                        <div>
+                          <label style={labelStyle}>Monto ({sym})</label>
+                          <div style={fieldBox}><input type="number" placeholder="0" value={newSrv.monto} onChange={function(e){setNewSrv(function(n){return Object.assign({},n,{monto:e.target.value});});}} style={iS}/></div>
+                        </div>
+                      )}
+                    </div>
+                    <div style={{marginBottom:14}}>
+                      <label style={labelStyle}>Estado inicial</label>
+                      <div style={{display:"flex",gap:6}}>
+                        {[["pagado",P.green],["pendiente",P.amber],["inactivo","#9ca3af"]].map(function(item){
+                          var k=item[0], col=item[1];
+                          return <button key={k} onClick={function(){setNewSrv(function(n){return Object.assign({},n,{estado:k});});}} style={{flex:1,padding:"8px",borderRadius:20,border:"1.5px solid "+(newSrv.estado===k?col:P.border),background:newSrv.estado===k?col+"18":P.bg2,color:newSrv.estado===k?col:P.textSub,fontSize:11,cursor:"pointer",fontWeight:newSrv.estado===k?700:400}}>{k.charAt(0).toUpperCase()+k.slice(1)}</button>;
+                        })}
+                      </div>
+                    </div>
+                    <div style={{display:"flex",gap:8}}>
+                      <button onClick={addSrv} style={{flex:1,padding:"12px",border:"none",borderRadius:12,cursor:"pointer",fontSize:13,fontWeight:700,background:P.btnGrad,color:"#fff",display:"flex",alignItems:"center",justifyContent:"center",gap:8}}>
+                        <Ico icon="__check__" size={15} color="#fff"/>Agregar servicio
+                      </button>
+                      <button onClick={function(){setShowNewSrv(false);}} style={{width:42,height:42,borderRadius:10,background:"rgba(248,113,113,0.12)",border:"1px solid rgba(248,113,113,0.35)",color:P.red,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>
+                        <Ico icon="__x__" size={16} color={P.red}/>
+                      </button>
+                    </div>
+                  </div>
+                )}
+                {servicios.length===0&&!showNewSrv&&(
+                  <div style={{textAlign:"center",padding:"2rem 0"}}>
+                    <Ico icon="__plug_connected__" size={32} color={P.textMuted}/>
+                    <p style={{fontSize:13,color:P.textMuted,margin:"8px 0 4px"}}>Sin servicios cargados</p>
+                    <p style={{fontSize:11,color:P.textMuted}}>Agregá Netflix, luz, internet, etc.</p>
+                  </div>
+                )}
+                {servicios.map(function(s,i){
+                  return (
+                    <div key={s.id} draggable
+                      onDragStart={function(){srvDragSrc.current=i;}}
+                      onDragOver={function(e){
+                        e.preventDefault();
+                        if(srvDragSrc.current===i)return;
+                        setServicios(function(p){var arr=p.slice(),item=arr.splice(srvDragSrc.current,1)[0];arr.splice(i,0,item);srvDragSrc.current=i;return arr;});
+                      }}
+                      onDragEnd={onSrvDragEnd}
+                      style={{marginBottom:8,opacity:s.estado==="inactivo"?0.55:1}}>
+                      <div style={{display:"flex",alignItems:"center",gap:10,padding:"11px 12px",background:P.bg3,borderRadius:12,border:"0.5px solid "+P.border,cursor:"grab"}}>
+                        <Ico icon="__grip__" size={16} color={P.textMuted}/>
+                        <div style={{width:34,height:34,borderRadius:9,background:"rgba(244,114,182,0.12)",border:"1px solid rgba(244,114,182,0.25)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+                          <Ico icon={s.icon||"__plug__"} size={17} color="#f472b6"/>
+                        </div>
+                        {editingSrv&&editingSrv.id===s.id?(
+                          <div style={{flex:1,display:"flex",flexDirection:"column",gap:8}}>
+                            <div style={{display:"flex",gap:6}}>
+                              <input value={editingSrv.nombre} onChange={function(e){setEditingSrv(function(x){return Object.assign({},x,{nombre:e.target.value});});}} style={{flex:1,fontSize:13,border:"1px solid "+P.border,borderRadius:7,padding:"5px 8px",background:P.bg2,color:P.text,outline:"none"}}/>
+                              {!editingSrv.monto_variable&&(
+                                <input type="number" value={editingSrv.monto} onChange={function(e){setEditingSrv(function(x){return Object.assign({},x,{monto:+e.target.value});});}} style={{width:90,fontSize:13,border:"1px solid "+P.border,borderRadius:7,padding:"5px 8px",background:P.bg2,color:P.text,outline:"none"}}/>
+                              )}
+                            </div>
+                            <div style={{background:P.bg2,borderRadius:9,padding:8,border:"1px solid "+P.border}}>
+                              <IconPicker value={editingSrv.icon||"__plug__"} onChange={function(ic){setEditingSrv(function(x){return Object.assign({},x,{icon:ic});});}} color="#f472b6"/>
+                            </div>
+                            <div style={{display:"flex",gap:6}}>
+                              <button onClick={function(){updateSrv(s.id,{nombre:editingSrv.nombre,icon:editingSrv.icon,monto:editingSrv.monto});}} style={{padding:"7px 14px",border:"none",borderRadius:8,cursor:"pointer",fontSize:12,fontWeight:700,background:P.btnGrad,color:"#fff",display:"flex",alignItems:"center",gap:5}}>
+                                <Ico icon="__check__" size={12} color="#fff"/>Guardar
+                              </button>
+                              <button onClick={function(){setEditingSrv(null);}} style={{padding:"7px 10px",border:"1px solid "+P.border,borderRadius:8,cursor:"pointer",fontSize:12,background:P.bg3,color:P.textSub}}>Cancelar</button>
+                            </div>
+                          </div>
+                        ):(
+                          <div style={{flex:1,minWidth:0}}>
+                            <div style={{display:"flex",alignItems:"baseline",gap:8}}>
+                              <span style={{fontSize:14,fontWeight:700}}>{s.nombre}</span>
+                              {s.monto_variable?(
+                                <span style={{fontSize:11,color:P.amber,fontWeight:600}}>Variable</span>
+                              ):(
+                                <span style={{fontSize:12,color:P.textSub}}>{fmtP(Number(s.monto),sym)}</span>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                        <EstadoBadge estado={s.estado} onClick={function(){toggleEstado(s.id);}}/>
+                        {(!editingSrv||editingSrv.id!==s.id)&&(
+                          <div style={{display:"flex",gap:4}}>
+                            <IBtn icon="__edit__" color={P.accent3} small title="Editar" onClick={function(){setEditingSrv(Object.assign({},s,{icon:s.icon||"__plug__"}));}}/>
+                            <IBtn icon="__trash__" color={P.red} small title="Eliminar" onClick={function(){deleteSrv(s.id);}}/>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+                <Divider label="Resumen"/>
+                <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8}}>
+                  {[["pagado",P.green,"Pagado"],["pendiente",P.amber,"Pendiente"],["inactivo","#9ca3af","Inactivo"]].map(function(item){
+                    var est=item[0], col=item[1], lbl=item[2];
+                    var items=servicios.filter(function(s){return s.estado===est;});
+                    var total=items.filter(function(s){return !s.monto_variable;}).reduce(function(a,s){return a+Number(s.monto);},0);
+                    var varC=items.filter(function(s){return s.monto_variable;}).length;
+                    return (
+                      <div key={est} style={{background:P.bg3,borderRadius:10,padding:"10px 12px",borderTop:"3px solid "+col}}>
+                        <p style={{fontSize:10,color:P.textMuted,margin:"0 0 2px",fontWeight:700,textTransform:"uppercase",letterSpacing:"0.05em"}}>{lbl}</p>
+                        <p style={{fontSize:15,fontWeight:700,margin:"0 0 1px",color:col}}>{fmtP(total,sym)}</p>
+                        <p style={{fontSize:10,color:P.textMuted,margin:0}}>{items.length} serv.{varC>0?" · "+varC+" var.":""}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <SectionFooter/>
+            </div>
+          )}
+          {montoSrvPending&&(
+            <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.7)",display:"flex",alignItems:"center",justifyContent:"center",zIndex:200}}>
+              <div style={{background:P.bg2,borderRadius:16,padding:24,width:300,boxShadow:"0 20px 60px rgba(0,0,0,0.5)",border:"1px solid "+P.border}}>
+                <p style={{fontWeight:700,fontSize:15,color:P.text,margin:"0 0 4px"}}>{"¿Cuánto pagaste?"}</p>
+                <p style={{fontSize:12,color:P.textMuted,margin:"0 0 16px"}}>{montoSrvPending.nombre}</p>
+                <input type="number" placeholder="0" value={montoSrvInput} onChange={function(e){setMontoSrvInput(e.target.value);}} style={{width:"100%",boxSizing:"border-box",background:P.bg3,border:"1px solid "+P.border,borderRadius:8,padding:"10px 12px",color:P.text,fontSize:18,fontWeight:700,outline:"none",marginBottom:16}} autoFocus/>
+                <div style={{display:"flex",gap:8}}>
+                  <button onClick={async function(){
+                    var m=Number(montoSrvInput)||0;
+                    await updateSrv(montoSrvPending.id,{estado:"pagado",monto:m});
+                    setMontoSrvPending(null); setMontoSrvInput("");
+                  }} style={{flex:1,background:P.green,border:"none",borderRadius:8,padding:"10px 0",color:"#000",fontWeight:700,fontSize:14,cursor:"pointer"}}>
+                    {"Confirmar"}
+                  </button>
+                  <button onClick={function(){setMontoSrvPending(null);setMontoSrvInput("");}} style={{flex:1,background:P.bg3,border:"1px solid "+P.border,borderRadius:8,padding:"10px 0",color:P.text,fontWeight:600,fontSize:14,cursor:"pointer"}}>
+                    {"Cancelar"}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ════ EXPORTAR ════ */}
+          {view==="exportar"&&(
+            <div>
+              <div style={card}>
+                <p style={{fontSize:13,fontWeight:700,margin:"0 0 14px"}}>Exportar datos</p>
+                <div style={{marginBottom:18}}>
+                  <label style={labelStyle}>Período</label>
+                  <div style={{border:"1px solid "+P.border,borderRadius:10,overflow:"hidden",background:P.bg3}}>
+                    <select value={exportMes} onChange={function(e){setExportMes(e.target.value);}} style={sS}>
+                      {exportMeses.map(function(m){return <option key={m.val} value={m.val}>{m.label}</option>;})}
+                    </select>
+                  </div>
+                </div>
+                <button onClick={exportCSV} style={{display:"flex",alignItems:"center",gap:12,padding:"14px 16px",background:P.bg3,border:"1px solid "+P.border,borderRadius:12,cursor:"pointer",width:"100%",marginBottom:10}}>
+                  <div style={{width:40,height:40,borderRadius:10,background:"rgba(52,211,153,0.15)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><Ico icon="__download__" size={20} color={P.green}/></div>
+                  <div style={{textAlign:"left"}}>
+                    <div style={{fontSize:14,fontWeight:600,color:P.text}}>Exportar CSV / Excel</div>
+                    <div style={{fontSize:12,color:P.textMuted}}>Abre en Excel, Google Sheets</div>
+                  </div>
+                </button>
+                <button onClick={exportPDF} style={{display:"flex",alignItems:"center",gap:12,padding:"14px 16px",background:P.bg3,border:"1px solid "+P.border,borderRadius:12,cursor:"pointer",width:"100%"}}>
+                  <div style={{width:40,height:40,borderRadius:10,background:"rgba(168,85,247,0.15)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><Ico icon="__printer__" size={20} color={P.accent2}/></div>
+                  <div style={{textAlign:"left"}}>
+                    <div style={{fontSize:14,fontWeight:600,color:P.text}}>Exportar PDF</div>
+                    <div style={{fontSize:12,color:P.textMuted}}>Abre ventana de impresión</div>
+                  </div>
+                </button>
+                <Divider label="Resumen del período"/>
+                {(function(){
+                  var parts=exportMes.split("-");
+                  var y=+parts[0], mo=+parts[1];
+                  var data=movs.filter(function(m){var d=new Date(m.fecha);return d.getFullYear()===y&&d.getMonth()+1===mo;});
+                  var ing=data.filter(function(m){return m.tipo==="ingreso";}).reduce(function(s,m){return s+Number(m.monto);},0);
+                  var eg=data.filter(function(m){return m.tipo==="egreso";}).reduce(function(s,m){return s+Number(m.monto);},0);
+                  return (
+                    <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8}}>
+                      {[[P.green,"Ingresos",ing],[P.red,"Egresos",eg],[ing-eg>=0?P.green:P.red,"Balance",ing-eg]].map(function(item){
+                        var col=item[0], lbl=item[1], val=item[2];
+                        return <div key={lbl} style={{background:P.bg3,borderRadius:10,padding:"10px 12px",borderTop:"3px solid "+col}}><p style={{fontSize:10,color:P.textMuted,margin:"0 0 2px",fontWeight:700,textTransform:"uppercase"}}>{lbl}</p><p style={{fontSize:14,fontWeight:700,color:col,margin:0}}>{fmtP(val,sym)}</p></div>;
+                      })}
+                    </div>
+                  );
+                })()}
+              </div>
+              <SectionFooter/>
+            </div>
+          )}
+
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
