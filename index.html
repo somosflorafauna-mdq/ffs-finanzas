@@ -16,8 +16,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{height:100%}
-body{font-family:system-ui,-apple-system,sans-serif;background:#0d0620;color:#f3e8ff;height:100%}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0d0620;color:#f3e8ff;min-height:100vh}
 input,select,button{font-family:inherit}
 input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
 select option{background:#2a1050;color:#f3e8ff}
@@ -27,115 +26,50 @@ select option{background:#2a1050;color:#f3e8ff}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{animation:fadeIn 0.18s ease}
-
-/* DESKTOP */
 @media(min-width:768px){
   .app-sidebar{display:flex!important}
   .app-bottomnav{display:none!important}
-  .mob-header{display:none!important}
-  .desk-header{display:block!important}
   .app-main{padding:20px!important}
 }
 @media(min-width:1024px){
   .app-main{padding:24px 28px!important}
 }
-
-/* MOBILE — position:absolute scroll inside fixed shell */
 @media(max-width:767px){
   .app-sidebar{display:none!important}
-  .desk-header{display:none!important}
-  .mob-header{display:block!important}
-
-  /* Full-screen fixed shell — contains everything, no flex tricks */
-  #mobile-shell{
-    display:block!important;
+  /* Shell: column flex, full viewport height */
+  .app-wrap{
+    display:flex!important;
+    flex-direction:column!important;
+    height:100svh!important;
+    height:100dvh!important;
+    overflow:hidden!important;
     position:fixed!important;
     top:0;left:0;right:0;bottom:0;
-    z-index:1;
-    background:#0d0620;
-    /* Single GPU layer for the whole app */
-    transform:translateZ(0);
+  }
+  /* Scroll area fills all available space between header and nav */
+  .app-main{
+    flex:1!important;
+    min-height:0!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    padding:8px 8px 12px!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior-y:contain!important;
+    /* Force isolated compositor layer — fixes Android Chrome ghosting */
     -webkit-transform:translateZ(0);
-    contain:strict;
+    transform:translateZ(0);
   }
-
-  /* Compact header — sits at top of shell */
-  .mob-header{
-    position:absolute!important;
-    top:0;left:0;right:0;
-    z-index:20;
-    /* No overflow:hidden, no border-radius on the container — these cause ghosting */
-    background:#0d0620;
-    padding:8px 8px 0;
-  }
-
-  /* Bottom nav — sits at bottom of shell */
+  /* Nav at bottom, natural flex order */
   .app-bottomnav{
     display:flex!important;
-    position:absolute!important;
-    bottom:0;left:0;right:0;
-    z-index:20;
-    background:#1a0a35;
-    border-top:1px solid rgba(168,85,247,0.25);
-    padding:6px 4px;
+    flex-shrink:0!important;
+    z-index:100!important;
   }
-
-  /* Scroll area — absolute, fills space between header and nav */
-  /* top/bottom set by JS after measuring header/nav heights */
-  .app-main{
-    position:absolute!important;
-    left:0!important;right:0!important;
-    /* fallback values; JS overrides these */
-    top:130px!important;
-    bottom:66px!important;
-    overflow-y:scroll!important;
-    overflow-x:hidden!important;
-    -webkit-overflow-scrolling:touch!important;
-    overscroll-behavior:contain!important;
-    padding:8px 8px 16px!important;
-    /* Isolation: no transforms here — let children paint normally */
-    isolation:isolate;
-  }
-
-  /* Kill border-radius and overflow:hidden on cards in mobile scroll
-     These are the #1 cause of Android Chrome compositing ghosts */
-  .app-main > * .ffs-card,
-  .app-main [style*="borderRadius"],
-  .app-main [style*="border-radius"]{
-    border-radius:0!important;
-    overflow:visible!important;
-  }
-
   .ffs-balance-amount{font-size:26px!important}
   .ffs-card-grid{grid-template-columns:1fr 1fr!important}
   .ffs-section-card{padding:12px!important}
-
-  /* Desktop-only wrapper hidden on mobile */
-  .app-wrap{display:block!important;max-width:none!important;margin:0!important}
 }
 </style>
-<script>
-(function(){
-  var RAF=window.requestAnimationFrame||function(f){setTimeout(f,16)};
-  function fit(){
-    var shell=document.getElementById('mobile-shell');
-    if(!shell||window.innerWidth>767)return;
-    var h=document.querySelector('.mob-header');
-    var n=document.querySelector('.app-bottomnav');
-    var m=document.querySelector('.app-main');
-    if(!h||!n||!m)return;
-    var ht=h.offsetHeight, nh=n.offsetHeight;
-    m.style.top=ht+'px';
-    m.style.bottom=nh+'px';
-  }
-  function run(){RAF(function(){fit();RAF(fit);})}
-  window.addEventListener('resize',run);
-  window.addEventListener('orientationchange',function(){setTimeout(run,200)});
-  // Run repeatedly after mount until stable
-  [100,300,600,1000].forEach(function(t){setTimeout(run,t)});
-  window._fitMobile=run;
-})();
-</script>
 </head>
 <body>
 <div id="root"></div>
@@ -477,51 +411,6 @@ function PieDonut({data, sym, priv}) {
   );
 }
 
-// ─── MOBILE HEADER ────────────────────────────────────────────────────────────
-function MobileHeader({profile,profiles,user,balance,ingresos,egresos,sym,monedaCode,monedas,privacyMode,mesLabel,fmtP,setShowProfilesPanel,setPrivacyMode,doLogout,setMonedaCode,activeProfileKey}){
-  return (
-    <div className="mob-header" style={{display:"none"}}>
-      <div style={{background:P.headerGrad,padding:"10px 12px 10px",position:"relative",overflow:"hidden",marginBottom:0}}>
-        <div style={{position:"absolute",top:-30,right:-30,width:100,height:100,borderRadius:"50%",background:"rgba(168,85,247,0.1)",pointerEvents:"none"}}/>
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6,position:"relative"}}>
-          <div style={{display:"flex",alignItems:"center",gap:6}}>
-            <FFSLogo size={14} color="rgba(255,255,255,0.55)"/>
-            <span style={{fontSize:9,color:"rgba(255,255,255,0.45)",fontWeight:700,letterSpacing:"0.1em"}}>FFS · {mesLabel}</span>
-          </div>
-          <div style={{display:"flex",gap:5,alignItems:"center"}}>
-            <button onClick={function(){setShowProfilesPanel(true);}} style={{display:"flex",alignItems:"center",gap:4,background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.2)",padding:"3px 8px 3px 4px",borderRadius:14,cursor:"pointer"}}>
-              <ProfileAvatar profile={profile} size={16}/>
-              <span style={{fontSize:10,color:"rgba(255,255,255,0.8)",fontWeight:600,maxWidth:65,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{profile&&profile.nombre||"Perfil"}</span>
-            </button>
-            <button onClick={function(){setPrivacyMode(function(v){return !v;});}} style={{width:26,height:26,background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.2)",borderRadius:7,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
-              <Ico icon={privacyMode?"__eye_off__":"__eye__"} size={12} color={privacyMode?P.pink:"rgba(255,255,255,0.75)"}/>
-            </button>
-            <button onClick={doLogout} style={{width:26,height:26,background:"rgba(255,255,255,0.08)",border:"1px solid rgba(255,255,255,0.15)",borderRadius:7,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}} title="Salir">
-              <Ico icon="__logout__" size={12} color="rgba(255,255,255,0.6)"/>
-            </button>
-          </div>
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",position:"relative"}}>
-          <div>
-            <div style={{fontSize:9,color:"rgba(255,255,255,0.3)",marginBottom:1}}>Balance</div>
-            <div style={{fontSize:22,fontWeight:700,color:"#fff",letterSpacing:"-0.5px"}}>{fmtP(balance,sym)}</div>
-          </div>
-          <div style={{display:"flex",gap:5}}>
-            <div style={{background:"rgba(52,211,153,0.12)",border:"1px solid rgba(52,211,153,0.2)",borderRadius:8,padding:"5px 9px",textAlign:"right"}}>
-              <div style={{fontSize:8,color:"rgba(52,211,153,0.55)",fontWeight:700,letterSpacing:"0.05em",marginBottom:1}}>ING</div>
-              <div style={{fontSize:12,fontWeight:700,color:P.green}}>{fmtP(ingresos,sym)}</div>
-            </div>
-            <div style={{background:"rgba(248,113,113,0.12)",border:"1px solid rgba(248,113,113,0.2)",borderRadius:8,padding:"5px 9px",textAlign:"right"}}>
-              <div style={{fontSize:8,color:"rgba(248,113,113,0.55)",fontWeight:700,letterSpacing:"0.05em",marginBottom:1}}>EGR</div>
-              <div style={{fontSize:12,fontWeight:700,color:P.red}}>{fmtP(egresos,sym)}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // ─── APP ──────────────────────────────────────────────────────────────────────
 function App() {
   var [user,setUser] = useState(null);
@@ -601,14 +490,12 @@ function App() {
             var pk = localStorage.getItem("ffs_profile_key") || null;
             await loadAll(u, sess.access_token, pk);
             setBooting(false);
-            if(window._fitMobile)window._fitMobile();
             return;
           }
         } catch(e) {}
         clearSess();
       }
       setBooting(false);
-      if(window._fitMobile)window._fitMobile();
     })();
   }, []);
 
@@ -991,7 +878,7 @@ function App() {
     {id:"exportar",icon:"__download__",label:"Exportar",color:P.green,sidebarOnly:true},
   ];
 
-  function navTo(id) { setView(id); setEditMovId(null); if(id==="lista") setFiltros({cuenta:"",tipo:"",catId:"",mes:""}); setTimeout(function(){if(window._fitMobile)window._fitMobile();},50); }
+  function navTo(id) { setView(id); setEditMovId(null); if(id==="lista") setFiltros({cuenta:"",tipo:"",catId:"",mes:""}); }
 
   if (booting) return (
     <div style={{display:"flex",alignItems:"center",justifyContent:"center",minHeight:"100vh",background:P.bg1,flexDirection:"column",gap:16}}>
@@ -1049,21 +936,10 @@ function App() {
   var fieldBox = {border:"1px solid "+P.border,borderRadius:10,overflow:"hidden",background:P.bg2};
 
   return (
-    <div id="mobile-shell" style={{background:P.bg1,minHeight:"100vh",color:P.text}}>
+    <div style={{background:P.bg1,minHeight:"100vh",color:P.text}}>
       <Toast msg={toast&&toast.msg} type={toast&&toast.type}/>
 
-      {/* ── MOBILE HEADER (fixed, outside scroll) ── */}
-      <MobileHeader
-        profile={profile} profiles={profiles} user={user}
-        balance={balance} ingresos={ingresos} egresos={egresos}
-        sym={sym} monedaCode={monedaCode} monedas={monedas}
-        privacyMode={privacyMode} mesLabel={mesLabel} fmtP={fmtP}
-        setShowProfilesPanel={setShowProfilesPanel}
-        setPrivacyMode={setPrivacyMode}
-        doLogout={doLogout}
-        setMonedaCode={setMonedaCode}
-        activeProfileKey={activeProfileKey}
-      />
+      {/* Modal: editar perfil */}
       <Modal open={showProfileModal} onClose={function(){setShowProfileModal(false);}} title="Editar perfil">
         <div style={{marginBottom:14}}>
           <label style={labelStyle}>Nombre del perfil</label>
@@ -1185,28 +1061,11 @@ function App() {
           </div>
         </nav>
 
-        {/* BOTTOM NAV */}
-<div className="app-bottomnav" style={{display:"none",background:P.bg2,borderTop:"1px solid "+P.border,padding:"6px 4px"}}>
-            {NAV.filter(function(t){return !t.sidebarOnly;}).map(function(t){
-              var active = view===t.id;
-              if(t.highlight) return (
-                <button key={t.id} onClick={function(){navTo(t.id);}} style={{flex:1.2,padding:"9px 2px",borderRadius:11,cursor:"pointer",border:"none",background:active?"linear-gradient(135deg,#9d174d,#e91e8c,#f472b6)":P.btnGrad,color:"#fff",fontSize:9,fontWeight:700,letterSpacing:"0.05em",display:"flex",flexDirection:"column",alignItems:"center",gap:3,boxShadow:"0 2px 10px rgba(168,85,247,0.4)"}}>
-                  <Ico icon={t.icon} size={17} color="#fff"/>{t.label.toUpperCase()}
-                </button>
-              );
-              return (
-                <button key={t.id} onClick={function(){navTo(t.id);}} style={{flex:1,padding:"7px 2px",border:"2px solid "+(active?t.color:P.border),borderRadius:11,cursor:"pointer",background:active?t.color+"18":P.bg2,color:active?t.color:P.textMuted,fontSize:9,fontWeight:active?700:500,letterSpacing:"0.04em",display:"flex",flexDirection:"column",alignItems:"center",gap:3}}>
-                  <Ico icon={t.icon} size={16} color={active?t.color:P.textMuted}/>{t.label.toUpperCase()}
-                </button>
-              );
-            })}
-          </div>
-
         {/* MAIN */}
         <div className="app-main" style={{flex:1,padding:12,minWidth:0}}>
 
-        {/* HEADER — desktop only */}
-          <div className="desk-header" style={{background:P.headerGrad,borderRadius:20,padding:"18px 16px",marginBottom:14,position:"relative",overflow:"hidden"}}>
+          {/* HEADER */}
+          <div style={{background:P.headerGrad,borderRadius:20,padding:"18px 16px",marginBottom:14,position:"relative",overflow:"hidden",willChange:"transform"}}>
             <div style={{position:"absolute",top:-60,right:-60,width:200,height:200,borderRadius:"50%",background:"rgba(168,85,247,0.1)"}}/>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12,position:"relative"}}>
               <div style={{display:"flex",alignItems:"center",gap:8}}>
@@ -1901,8 +1760,26 @@ function App() {
             </div>
           )}
 
+        </div>{/* /app-main */}
+
+        {/* BOTTOM NAV — after main in DOM so flex-column puts it at bottom */}
+        <div className="app-bottomnav" style={{display:"none",background:P.bg2,borderTop:"1px solid "+P.border,padding:"6px 4px",flexShrink:0}}>
+          {NAV.filter(function(t){return !t.sidebarOnly;}).map(function(t){
+            var active = view===t.id;
+            if(t.highlight) return (
+              <button key={t.id} onClick={function(){navTo(t.id);}} style={{flex:1.2,padding:"9px 2px",borderRadius:11,cursor:"pointer",border:"none",background:active?"linear-gradient(135deg,#9d174d,#e91e8c,#f472b6)":P.btnGrad,color:"#fff",fontSize:9,fontWeight:700,letterSpacing:"0.05em",display:"flex",flexDirection:"column",alignItems:"center",gap:3,boxShadow:"0 2px 10px rgba(168,85,247,0.4)"}}>
+                <Ico icon={t.icon} size={17} color="#fff"/>{t.label.toUpperCase()}
+              </button>
+            );
+            return (
+              <button key={t.id} onClick={function(){navTo(t.id);}} style={{flex:1,padding:"7px 2px",border:"2px solid "+(active?t.color:P.border),borderRadius:11,cursor:"pointer",background:active?t.color+"18":P.bg2,color:active?t.color:P.textMuted,fontSize:9,fontWeight:active?700:500,letterSpacing:"0.04em",display:"flex",flexDirection:"column",alignItems:"center",gap:3}}>
+                <Ico icon={t.icon} size={16} color={active?t.color:P.textMuted}/>{t.label.toUpperCase()}
+              </button>
+            );
+          })}
         </div>
-      </div>
+
+      </div>{/* /app-wrap */}
     </div>
   );
 }
