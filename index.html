@@ -36,11 +36,9 @@ select option{background:#2a1050;color:#f3e8ff}
 }
 @media(max-width:767px){
   .app-sidebar{display:none!important}
-  /* ARQUITECTURA FINAL:
-     fixed shell + internal scroll + bottomnav en el flow (NO fixed)
-     NUNCA usar position:fixed en elementos dentro del scroll
-     NUNCA usar transform/will-change en el scroll container
-     El header usa background sólido y sin overflow:hidden            */
+  /* ARQUITECTURA FINAL - confirmada por DevTools:
+     fixed shell + scroll interno + nav EN EL FLOW (no position:fixed)
+     Esto elimina el compositor layer separado del nav que causaba el glitch */
   html,body{
     height:100%!important;
     overflow:hidden!important;
@@ -51,7 +49,6 @@ select option{background:#2a1050;color:#f3e8ff}
     display:flex!important;
     flex-direction:column!important;
     overflow:hidden!important;
-    max-width:100vw!important;
   }
   .app-main{
     flex:1!important;
@@ -59,26 +56,19 @@ select option{background:#2a1050;color:#f3e8ff}
     overflow-y:scroll!important;
     overflow-x:hidden!important;
     -webkit-overflow-scrolling:touch!important;
-    overscroll-behavior-y:contain!important;
-    padding:8px 8px 8px!important;
+    padding:8px!important;
   }
+  /* Nav en el flow — NO position:fixed, NO compositor layer separado */
   .app-bottomnav{
     display:flex!important;
     flex-shrink:0!important;
-    position:relative!important;
-    z-index:auto!important;
+    position:static!important;
+    background:#1a0a35!important;
+    border-top:1px solid rgba(168,85,247,0.25)!important;
   }
-  /* Header: sin GPU layer triggers */
-  .ffs-header-mobile{
-    background:#1a0535!important;
-    overflow:visible!important;
-    will-change:auto!important;
-    transform:none!important;
-    -webkit-transform:none!important;
-    border-radius:14px!important;
-  }
-  .ffs-header-bubble{display:none!important;}
   .ffs-balance-amount{font-size:26px!important}
+  .ffs-card-grid{grid-template-columns:1fr 1fr!important}
+  .ffs-section-card{padding:12px!important}
 }
 </style>
 </head>
@@ -1076,7 +1066,7 @@ function App() {
         <div className="app-main" style={{flex:1,padding:12,minWidth:0}}>
 
           {/* HEADER — className ffs-header-mobile activa el fix en mobile */}
-          <div className="ffs-header-mobile" style={{background:P.headerGrad,borderRadius:20,padding:"18px 16px",marginBottom:14,position:"relative"}}>
+          <div className="ffs-header-mobile" style={{background:P.headerGrad,borderRadius:20,padding:"18px 16px",marginBottom:14,position:"relative",overflow:"hidden",willChange:"transform"}}>
             {/* burbuja decorativa — oculta en mobile via .ffs-header-bubble */}
             <div className="ffs-header-bubble" style={{position:"absolute",top:-60,right:-60,width:200,height:200,borderRadius:"50%",background:"rgba(168,85,247,0.1)"}}/>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12,position:"relative"}}>
@@ -1777,7 +1767,7 @@ function App() {
         </div>{/* /app-main */}
 
         {/* BOTTOM NAV */}
-        <div className="app-bottomnav" style={{display:"none",background:P.bg2,borderTop:"1px solid "+P.border,padding:"6px 4px",flexShrink:0}}>
+        <div className="app-bottomnav" style={{display:"none",padding:"6px 4px",flexShrink:0}}>
           {NAV.filter(function(t){return !t.sidebarOnly;}).map(function(t){
             var active = view===t.id;
             if(t.highlight) return (
