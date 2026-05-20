@@ -26,7 +26,6 @@ select option{background:#2a1050;color:#f3e8ff}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{animation:fadeIn 0.18s ease}
-@media(max-width:767px){.ffs-header-bubble{display:none!important}}
 @media(min-width:768px){
   .app-sidebar{display:flex!important}
   .app-bottomnav{display:none!important}
@@ -37,9 +36,7 @@ select option{background:#2a1050;color:#f3e8ff}
 }
 @media(max-width:767px){
   .app-sidebar{display:none!important}
-  /* ARQUITECTURA FINAL - confirmada por DevTools:
-     fixed shell + scroll interno + nav EN EL FLOW (no position:fixed)
-     Esto elimina el compositor layer separado del nav que causaba el glitch */
+  .ffs-header-bubble{display:none!important}
   html,body{
     height:100%!important;
     overflow:hidden!important;
@@ -50,22 +47,26 @@ select option{background:#2a1050;color:#f3e8ff}
     display:flex!important;
     flex-direction:column!important;
     overflow:hidden!important;
+    isolation:isolate!important;
   }
   .app-main{
     flex:1!important;
     min-height:0!important;
     overflow-y:scroll!important;
     overflow-x:hidden!important;
-    -webkit-overflow-scrolling:touch!important;
     padding:8px!important;
+    -webkit-overflow-scrolling:auto!important;
+    transform:translateZ(0)!important;
+    backface-visibility:hidden!important;
+    -webkit-backface-visibility:hidden!important;
   }
-  /* Nav en el flow — NO position:fixed, NO compositor layer separado */
   .app-bottomnav{
     display:flex!important;
     flex-shrink:0!important;
     position:static!important;
     background:#1a0a35!important;
     border-top:1px solid rgba(168,85,247,0.25)!important;
+    transform:translateZ(0)!important;
   }
   .ffs-balance-amount{font-size:26px!important}
   .ffs-card-grid{grid-template-columns:1fr 1fr!important}
