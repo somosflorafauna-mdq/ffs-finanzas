@@ -26,6 +26,7 @@ select option{background:#2a1050;color:#f3e8ff}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{animation:fadeIn 0.18s ease}
+@media(max-width:767px){.ffs-header-bubble{display:none!important}}
 @media(min-width:768px){
   .app-sidebar{display:flex!important}
   .app-bottomnav{display:none!important}
@@ -1066,7 +1067,7 @@ function App() {
         <div className="app-main" style={{flex:1,padding:12,minWidth:0}}>
 
           {/* HEADER — className ffs-header-mobile activa el fix en mobile */}
-          <div className="ffs-header-mobile" style={{background:P.headerGrad,borderRadius:20,padding:"18px 16px",marginBottom:14,position:"relative",overflow:"hidden",willChange:"transform"}}>
+          <div className="ffs-header-mobile" style={{background:P.headerGrad,borderRadius:20,padding:"18px 16px",marginBottom:14,position:"relative"}}>
             {/* burbuja decorativa — oculta en mobile via .ffs-header-bubble */}
             <div className="ffs-header-bubble" style={{position:"absolute",top:-60,right:-60,width:200,height:200,borderRadius:"50%",background:"rgba(168,85,247,0.1)"}}/>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12,position:"relative"}}>
